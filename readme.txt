@@ -1,3 +1,4 @@
+bản thiết kế trên figma: https://www.figma.com/file/I5za49E2SezrtA7WKrYS1Z/lofi001-(Community)-(Copy)?node-id=243%3A1
 thanh header
 form đăng nhập, đăng kí
 card
