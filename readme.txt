@@ -3,6 +3,8 @@ form đăng nhập, đăng kí
 card
 thanh điều hướng (navigator)
 footer
+content (phần chính trên trang web), aside (phần phụ bên phải)
+
 //trang
 trang chu 
 trang dang nhap
