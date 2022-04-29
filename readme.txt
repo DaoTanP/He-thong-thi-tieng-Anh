@@ -2,6 +2,7 @@ thanh header
 form đăng nhập, đăng kí
 card
 thanh điều hướng (navigator)
+footer
 //trang
 trang chu 
 trang dang nhap
