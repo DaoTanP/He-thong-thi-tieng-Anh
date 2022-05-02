@@ -1,0 +1,50 @@
+/* File Base :chung */
+
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --primary-color-gr :#2e8b8d;
+    --primary-color-yl :#e8ae98;
+    --text-color: #333;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    /* Đặt 1 tiêu chuẩn chuyển  px -> rem */
+    font-size: 62.5%; 
+    /* Đặt độ cao chữ */
+    line-height: 1.6rem;
+    /* Nhúng font chữ */
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;  
+    box-sizing: border-box;
+
+}
+
+/* Hỗ trợ khi responsive */
+.grid {
+    /* width: 800px; */
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Khi không muốn dùng w1k2px */
+.grid__full-width {
+    width: 100%;
+}
+
+/* Những tp nằm trong row */
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid__col-2-3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 33.333333%;
+}

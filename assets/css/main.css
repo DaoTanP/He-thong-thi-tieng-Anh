@@ -1,0 +1,132 @@
+/* File main : riêng */
+.main {
+
+}
+/* Header Start */
+.header {
+    height: 120px;
+    /* background-color: #2e8b8d; */
+    background-image: linear-gradient(0 ,#2e8b8d,#0c4344 );
+}   
+
+.header__navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-header {
+    width: 120px;
+    margin: 0 32px 32px;
+}
+
+.header__navbar-form-menu {
+    margin-top: 32px;
+    
+}
+
+.header__navbar-list {
+   list-style: none;
+   padding-left: 0;
+   padding: 0 16px;
+   display: flex;
+}
+
+.wrap-register, 
+.wrap-login {
+    padding: 4px 8px;
+    border-style: ridge;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+     background-color: rgba(3, 63, 44, 0.7); 
+     background-color: transparent; 
+}
+
+.wrap-register:hover, 
+.wrap-login:hover {
+    box-shadow: 0 0 2px #ffc000,
+                0 0 3px #ffc000,
+                0 0 5px #ffc000; 
+}
+
+.header__navbar-item {
+    margin: 0 8px;
+    position: relative;
+}
+
+.header__navbar-icon {
+
+}
+
+.header__navbar-item,
+.header__navbar-item-link {
+    display: inline-block;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color:var(--primary-color-yl);
+    font-weight: 400;
+}
+
+.header__navbar-item:hover,
+.header__navbar-item-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.header__navbar-item--B {
+    font-weight: 500;    
+}
+
+/* Đăng kí / đăng nhập */
+.header__navbar-form-log-reg {
+    margin-top: 20px;
+}
+
+/* Header end */
+.container {
+
+}
+
+.footer {
+    padding-top: 12px;
+    border-top: 4px solid var(--primary-color-yl);
+    background-color: var(--primary-color-gr);
+    color: var(--primary-color-yl);
+}
+
+.footer_logo {
+    width: 120px;
+    margin: 0 32px 32px;
+}
+
+.footer__heading {
+    font-size: 1.6rem;   
+    text-transform: uppercase; 
+    padding: 4px 0;
+    display: block;
+}
+
+.footer_socials {
+    list-style: none;
+    font-size: 1.6rem;
+    color: var(--primary-color-yl);
+}
+
+.footer_socials:hover {
+    cursor: pointer;
+}
+
+.icon__socials {
+    color: var(--primary-color-yl);
+    padding: 4px 0;
+}
+
+.footer__more {
+    /* border-top: 4px solid var(--primary-color-yl); */
+    text-align: center;
+    font-size: 1.4rem;
+    min-height: 32px;
+}
+
+
+
