@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,73 +12,56 @@
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@100;300;400;500;700&display=swap');
-     </style>
-       
+    </style>
+
 </head>
+
 <body>
     <div class="main">
         <!-- Thanh Header -->
-       <div class="header">
-           <!-- Quy định căn màn hình Responsive -->
-            <div class="grid"> 
+        <div class="header">
+            <!-- Quy định căn màn hình Responsive -->
+            <div class="grid full-height flex-container">
+                <!-- Header logo -->
+                <a href="#">
+                    <img class="logo-header" src="./assets/img/new-lgoteam" alt="logo-team4">
+                </a>
                 <!-- Header navigation -->
-                <nav class="header__navbar"> 
-                    <!-- Header logo -->
-                    <div class="header__navbar-form-logo"> 
-                        <a href="#">
-                            <img class="logo-header" src="./assets/img/new-lgoteam.png" alt="logo-team4">
-                        </a>   
-                    </div>
+                <nav class="navbar">
                     <!-- Header Menu -->
-                    <div class="header__navbar-form-menu">
-                        <ul class="header__navbar-list">
-                            <li class="header__navbar-item">
-                                <i class="header__navbar-icon fa-solid fa-house"></i>
-                                Trang chủ                            
-                            </li>
-                            <li class="header__navbar-item">
-                                Bài thi
-                            </li>
-                            <li class="header__navbar-item">
-                                Tài liệu
-                                <i class="header__navbar-icon fa-solid fa-caret-down"></i>
-                            </li>
-                            <li class="header__navbar-item">
-                                <a href="" class="header__navbar-item-link">
-                                    Trợ giúp
-                                    <i class="header__navbar-icon fa-solid fa-circle-question"></i>
-                                </a> 
-                            </li>
-                            <li class="header__navbar-item">
-                                <a href="" class="header__navbar-item-link">
-                                    Hỏi đáp
-                                    <i class="header__navbar-icon fa-solid fa-person-circle-question"></i>
-                                </a> 
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Header Form đăng nhập/đăng kí -->
-                    <div class="header__navbar-form-log-reg">                      
-                        <ul class="header__navbar-list">
-                            <div class="wrap-register">
-                                <li class="header__navbar-item  header__navbar-item--B header__navbar-item-space ">Đăng kí</li>
-                            </div>
-                            <div class="wrap-login">
-                                <li class="header__navbar-item  header__navbar-item--B">Đăng nhập</li>
-                            </div>
-                        </ul>
-                    </div>
+                    <ul class="navbar-list grid-container full-height">
+                        <li>
+                            <a href=""><i class="icon fa-solid fa-house"></i>Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="">Bài thi</a>
+                        </li>
+                        <li>
+                            <a href="">Tài liệu<i class="icon fa-solid fa-caret-down"></i></a>
+                        </li>
+                        <li>
+                            <a href="">Trợ giúp<i class="icon fa-solid fa-circle-question"></i></a>
+                        </li>
+                        <li>
+                            <a href="">Hỏi đáp<i class="icon fa-solid fa-person-circle-question"></i></a>
+                        </li>
+                    </ul>
                 </nav>
+                <!-- Header Form đăng nhập/đăng kí -->
+                <div class="flex-container full-height">
+                    <a class="btn">Đăng kí</a>
+                    <a class="btn btn-filled">Đăng nhập</a>
+                </div>
             </div>
-       </div>
+        </div>
 
-       <!-- Phần nội dung Container -->
-       <div class="container">
+        <!-- Phần nội dung Container -->
+        <div class="container">
 
-       </div>
+        </div>
         <div class="girlxinh">
-            <img src="./assets/img/girl-xinh-1-480x600.jpg" alt="">
-            <img src="./assets/img/Hinh-Nen-Girl-Xinh-Full-HD-Cho-Laptop-Va-May.jpg" alt="">
+            <img src="./assets/img/girl-xinh-1-480x600" alt="">
+            <img src="./assets/img/Hinh-Nen-Girl-Xinh-Full-HD-Cho-Laptop-Va-May" alt="">
         </div>
         <!-- Phần cuối -->
         <div class="footer">
@@ -86,7 +70,7 @@
                     <div class="footer_logo">
                         <a href="#">
                             <img class="logo-header" src="./assets/img/new-lgoteam.png" alt="logo-team4">
-                        </a> 
+                        </a>
                     </div>
                 </div>
                 <div class="grid__col-2-3">
@@ -111,7 +95,7 @@
                         <li>
                             <a href=""><i class="icon__socials fa-brands fa-tiktok"></i></a>
                             Tiktok
-                        </li>                       
+                        </li>
                     </div>
                 </div>
             </div>
@@ -119,10 +103,11 @@
                 <p>© 2018 - 2022 LTW4.All rights reserved.</p>
             </div>
         </div>
-        
-        
+
+
 
     </div>
 
 </body>
+
 </html>
