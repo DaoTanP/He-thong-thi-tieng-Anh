@@ -1,0 +1,139 @@
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; 
+    line-height: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+} 
+
+body {
+    height: 200vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color-gr);
+}
+
+.container {
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0, 0, 0.1);
+}
+
+.container .form {
+    width: 100%;
+    padding: 30px;
+}
+
+.container .form .title {
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.form .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: var(--primary-color-gr);
+    border-radius: 25px;
+}
+
+.form .input-field {
+    background-color: var(--primary-color-yl);
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-field input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-bottom: 2px solid var(--primary-color-yl);
+    border-top: 2px solid transparent;
+}
+
+.input-field i{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+.form .checkbox-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-content input {
+    margin: 0 8px -2px 4px;
+    accent-color: var(--primary-color-yl);
+}
+.checkbox-content input:hover,
+.checkbox-content label:hover {
+    cursor: pointer;
+}
+
+.form .text {
+    color: #000;
+    font-size: 16px;
+}
+
+.form a.text {
+    color: var(--primary-color-gr);
+    text-decoration: none;
+}
+
+.form a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.form .button {
+    margin-top: 35px;
+}
+
+.form .button input {
+    border: none;
+    color: var(--primary-color-yl);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: var(--primary-color-gr);
+    cursor: pointer;
+    /* Làm thêm cái hiệu ứng khi hover vào */
+}
+
+.button input:hover {
+    background-color: var(--primary-color-gr);
+}
+ 
+.form .login-signup {
+    margin-top: 30px;
+    text-align: center;
+}
+
