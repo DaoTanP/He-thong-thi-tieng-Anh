@@ -60,7 +60,7 @@
     cursor: pointer;
 }
 .navbar-list a:hover {
-    background-color: #2e8b8d33;
+    background-color: #2e8b8d50;
     color: #0c4344;
     outline: 2px solid #0c4344;
 }
@@ -77,7 +77,7 @@
 
 .btn:not(:disabled):hover {
     cursor: pointer;
-    background-color: #2e8b8d33
+    background-color: #2e8b8d50
 }
 
 .btn:not(:disabled):active {
@@ -101,7 +101,7 @@
 }
 
 .btn.btn-filled:not(:disabled):focus {
-    outline: .25em solid #2e8b8d33
+    outline: .25em solid #2e8b8d50
 }
 
 .btn.btn-filled:not(:disabled):active {
