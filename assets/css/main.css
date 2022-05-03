@@ -72,6 +72,7 @@
     padding: .325em 1em;
     user-select: none;
     border-radius: .25em;
+    text-decoration: none;
 }
 
 .btn:not(:disabled):hover {
