@@ -19,42 +19,50 @@
 
 <body>
     <div class="container">
-        <div class="forms">
-            <!-- Đăng nhập -->
-            <div class="form">
-                <span class="title">Đăng nhập</span>
+        <!-- Đăng nhập -->
+        <div class="form">
+            <span class="title">Đăng nhập</span>
 
-                <form action="#">
-                    <div class="input-field">
-                        <input type="text" placeholder="Nhập email" required>
-                        <i class="fa-solid fa-envelope icon"></i>
-                    </div>
-
-                    <div class="input-field">
-                        <input type="password" placeholder="Nhập mật khẩu" required>
-                        <i class="fa-solid fa-key icon"></i>
-                    </div>
-
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text">Lưu mật khẩu</label>
-                        </div>
-                        <a href="#" class="text">Quên mật khẩu ?</a>
-                    </div>
-
-                    <div class="input-field">
-                        <input class="btn btn-filled" type="submit" value="Đăng nhập" required>
-                    </div>
-                </form>
-
-                <div class="login-signup">
-                    <span class="text"> Chưa có tài khoản?
-                        <a href="" class="text signup-text">Đăng ký ngay</a>
-                    </span>
+            <form action="#">
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="text" placeholder="Nhập email" required>
                 </div>
 
+                <div class="input-field">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" placeholder="Nhập mật khẩu" required>
+                    <button onclick="showPassword(this.parent)"><i class="fa-solid fa-eye password-check"></i></button>
+                    <script>
+                        function showPassword(element) {
+                            var input = element.querySelector("#mylink > img:first-of-type");
+                            if (temp.type === "password") {
+                                temp.type = "text";
+                            }
+                            else {
+                                temp.type = "password";
+                            }
+                        }
+                    </script>
+                </div>
+
+                <div class="checkbox-text">
+                    <div class="checkbox-content">
+                        <input type="checkbox" id="logCheck">
+                        <label for="logCheck" class="text">Lưu mật khẩu</label>
+                    </div>
+                    <a href="#" class="text">Quên mật khẩu ?</a>
+                </div>
+
+                <input class="btn btn-filled" type="submit" value="Đăng nhập" required>
+            </form>
+
+            <div class="login-signup">
+                <span class="text"> Chưa có tài khoản?
+                    <a href="" class="text signup-text">Đăng ký ngay</a>
+                </span>
             </div>
+
         </div>
     </div>
 </body>

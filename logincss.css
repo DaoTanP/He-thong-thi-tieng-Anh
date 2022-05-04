@@ -63,9 +63,17 @@ body {
 .input-field i {
     position: absolute;
     top: 50%;
-    left: 0;
+    z-index: 1;
     transform: translateY(-50%);
-    font-size: 16px;
+    font-size: 1em;
+}
+
+.input-field i:not(.password-check) {
+    left: 0;
+}
+
+.input-field i.password-check {
+    right: 0;
 }
 
 .form .checkbox-text {
