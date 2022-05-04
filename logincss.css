@@ -3,7 +3,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-color-gr);
+    background-color: var(--primary);
 }
 
 .container {
@@ -33,7 +33,7 @@ body {
     bottom: 0;
     height: 3px;
     width: 30px;
-    background-color: var(--primary-color-gr);
+    background-color: var(--primary);
     border-radius: 25px;
 }
 
@@ -52,12 +52,12 @@ body {
     border: none;
     outline: none;
     font-size: 15px;
-    border-bottom: 2px solid var(--primary-color-yl);
+    border-bottom: 2px solid var(--secondary);
     border-top: 2px solid transparent;
 }
 
 .input-field :not(input[type='submit']):focus {
-    border-bottom: 2px solid var(--primary-color-gr);
+    border-bottom: 2px solid var(--primary);
 }
 
 .input-field i {
@@ -83,17 +83,12 @@ body {
 
 .checkbox-content input[type='checkbox'] {
     margin: 0 8px -2px 4px;
-    accent-color: var(--primary-color-yl);
+    accent-color: var(--primary);
     transform: scale(1.5) translateY(-10%);
 }
 
-.form .text {
-    color: #000;
-    font-size: 16px;
-}
-
 .form a.text {
-    color: var(--primary-color-gr);
+    color: var(--primary);
     text-decoration: none;
 }
 

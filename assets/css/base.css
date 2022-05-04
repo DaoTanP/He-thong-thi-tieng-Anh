@@ -1,12 +1,10 @@
 /* File Base :chung */
 
 :root {
-    --white-color: #fff;
-    --black-color: #000;
-    --primary-color-gr: #2e8b8d;
-    --primary-color-yl:
-        /* #e8ae98 */
-        #222;
+    --primary: #2e8b8d;
+    --primary-shadow: #2e8b8d50;
+    --primary-dark: #0c4344;
+    --secondary: #e8ae98;
     --text-color: #333;
     font-size: 16px;
 }
@@ -20,14 +18,11 @@
 }
 
 html {
-    /* Đặt 1 tiêu chuẩn chuyển  px -> rem */
-    /* Đặt độ cao chữ */
+    /* Đặt độ cao dòng */
     line-height: 1.6rem;
     /* Nhúng font chữ */
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'Poppins', sans-serif;
     box-sizing: border-box;
-
 }
 
 /* Hỗ trợ khi responsive */
