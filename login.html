@@ -23,7 +23,7 @@
         <div class="form">
             <span class="title">Đăng nhập</span>
 
-            <form action="#">
+            <form action="dangnhap.php">
                 <div class="input-field">
                     <i class="fa-solid fa-envelope"></i>
                     <input type="text" placeholder="Nhập email" required>
@@ -35,12 +35,12 @@
                     <button onclick="showPassword(this.parent)"><i class="fa-solid fa-eye password-check"></i></button>
                     <script>
                         function showPassword(element) {
-                            var input = element.querySelector("#mylink > img:first-of-type");
-                            if (temp.type === "password") {
-                                temp.type = "text";
+                            var input = element.querySelector("input");
+                            if (input.type === "password") {
+                                input.type = "text";
                             }
                             else {
-                                temp.type = "password";
+                                input.type = "password";
                             }
                         }
                     </script>
