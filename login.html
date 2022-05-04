@@ -31,16 +31,21 @@
 
                 <div class="input-field">
                     <i class="fa-solid fa-key"></i>
-                    <input type="password" placeholder="Nhập mật khẩu" required>
-                    <button onclick="showPassword(this.parent)"><i class="fa-solid fa-eye password-check"></i></button>
+                    <input type="password" class="password" placeholder="Nhập mật khẩu" required>
+                    <i class="fa-solid fa-eye password-check" onclick="showPassword()"></i>
                     <script>
-                        function showPassword(element) {
-                            var input = element.querySelector("input");
+                        function showPassword() {
+                            let input = document.querySelector(".input-field>.password");
+                            let eyeIcon = document.querySelector(".input-field>.password-check");
                             if (input.type === "password") {
                                 input.type = "text";
+                                eyeIcon.classList.add('fa-eye-slash');
+                                eyeIcon.classList.remove('fa-eye');
                             }
                             else {
                                 input.type = "password";
+                                eyeIcon.classList.add('fa-eye');
+                                eyeIcon.classList.remove('fa-eye-slash');
                             }
                         }
                     </script>

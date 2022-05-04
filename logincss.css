@@ -37,21 +37,21 @@ body {
     border-radius: 25px;
 }
 
-.form .input-field {
+.form .input-field, .form *[type='submit'] {
     position: relative;
-    height: 50px;
+    height: 3rem;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 2rem;
 }
 
 .input-field input {
     position: absolute;
     height: 100%;
     width: 100%;
-    padding: 0 35px;
+    padding: 0 2rem;
     border: none;
     outline: none;
-    font-size: 15px;
+    font-size: 1rem;
     border-bottom: 2px solid var(--secondary);
     border-top: 2px solid transparent;
 }
@@ -74,12 +74,13 @@ body {
 
 .input-field i.password-check {
     right: 0;
+    cursor: pointer;
 }
 
 .form .checkbox-text {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 1.5rem;
 }
 
 .checkbox-text .checkbox-content {
@@ -90,9 +91,9 @@ body {
 }
 
 .checkbox-content input[type='checkbox'] {
-    margin: 0 8px -2px 4px;
+    margin-right: 1em;
     accent-color: var(--primary);
-    transform: scale(1.5) translateY(-10%);
+    transform: scale(1.5) translateY(-5%);
 }
 
 .form a.text {
@@ -106,6 +107,6 @@ body {
 }
 
 .form .login-signup {
-    margin-top: 30px;
+    margin-top: 2rem;
     text-align: center;
 }
