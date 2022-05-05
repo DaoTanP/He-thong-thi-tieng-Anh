@@ -43,7 +43,6 @@ body {
     width: 100%;
     margin-top: 2rem;
 }
-
 .input-field input {
     position: absolute;
     height: 100%;
@@ -93,7 +92,7 @@ body {
 .checkbox-content input[type='checkbox'] {
     margin-right: 1em;
     accent-color: var(--primary);
-    transform: scale(1.5) translateY(-5%);
+    transform: scale(1.5);
 }
 
 .form a.text {
