@@ -12,7 +12,6 @@
     $ketqua  = mysqli_query($conn, $caulenh);
 
     if (mysqli_fetch_row($ketqua)) {
-        echo 'login successfully <br>';
         if (isset($_POST['nhoMatKhau'])) {
             setcookie('username', $username, time() + 30 /*(86400 * 30)*/, '/');
             setcookie('password', $password, time() + 30 /*(86400 * 30)*/, '/');
