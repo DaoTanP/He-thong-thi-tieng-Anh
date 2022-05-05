@@ -24,5 +24,6 @@
         // unset($_SESSION['user']);
     } else {
         header("Location: login.html");
+        setcookie('loginError', 'true', time() + 5 /*(86400 * 30)*/, '/');
     }
     ?>
