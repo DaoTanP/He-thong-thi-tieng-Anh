@@ -25,6 +25,14 @@ html {
     box-sizing: border-box;
 }
 
+.container {
+    max-width: calc(100% - 4rem);
+}
+
+.container-sm {
+    max-width: calc(100% - 8rem);
+}
+
 /* Hỗ trợ khi responsive */
 .grid {
     /* width: 800px; */
@@ -50,4 +58,20 @@ html {
     padding-left: 5px;
     padding-right: 5px;
     width: 33.333333%;
+}
+
+.carousel-container, .carousel-group {
+    display: grid;
+    grid-auto-flow: column;
+}
+.carousel-container {
+    grid-auto-columns: 100%;
+}
+.carousel-group {
+    grid-auto-columns: 1fr;
+}
+.carousel-group>img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
