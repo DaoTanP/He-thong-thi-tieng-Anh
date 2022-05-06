@@ -12,6 +12,7 @@
 * {
     box-sizing: border-box;
     transition: .25s;
+    scroll-behavior: smooth;
 }
 *::before, *::after {
     box-sizing: inherit;
@@ -60,18 +61,53 @@ html {
     width: 33.333333%;
 }
 
-.carousel-container, .carousel-group {
+.carousel-container {
     display: grid;
     grid-auto-flow: column;
-}
-.carousel-container {
     grid-auto-columns: 100%;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
 }
 .carousel-group {
-    grid-auto-columns: 1fr;
+    position: relative;
 }
 .carousel-group>img {
     width: 100%;
-    height: auto;
+    height: 50vh;
+    max-height: 640px;
     object-fit: cover;
+}
+.carousel-group>:where(.arrow-l, .arrow-r) {
+    position: absolute;
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    background-color: #33333350;
+    text-decoration: none;
+    height: 100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+.carousel-group>a.arrow-l {
+    left: 0;
+}
+.carousel-group>a.arrow-r {
+    right: 0;
+}
+.carousel-group>:where(.arrow-l, .arrow-r)::before {
+    position: relative;
+    top: 30%;
+}
+.carousel-group>:where(.arrow-l, .arrow-r):hover {
+    background-color: #33333390;
+}
+.carousel-group>:where(.arrow-l, .arrow-r):hover::before {
+    transform: scale(1.5);
+}
+.carousel-group>a.arrow-l::before {
+    content: '\2039';
+}
+.carousel-group>a.arrow-r::before {
+    content: '\203A';
 }

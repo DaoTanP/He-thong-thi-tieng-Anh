@@ -13,13 +13,12 @@
 </head>
 
 <body>
-    <div class="main">
-        <?php
-        require './source/html/header.html';
-        require './source/html/home.html';
-        require './source/html/footer.html';
-        ?>
-    </div>
+    <?php
+    require './source/html/header.html';
+    require './source/html/carousel.html';
+    require './source/html/home.html';
+    require './source/html/footer.html';
+    ?>
 </body>
 
 </html>
