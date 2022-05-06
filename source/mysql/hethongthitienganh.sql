@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `cauhoi` (
   `D` text,
   `DapAnDung` text NOT NULL,
   KEY `id` (`MaCauHoi`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `cauhoi`
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `nguoidung` (
   `TenDangNhap` varchar(50) NOT NULL,
   `MatKhau` varchar(50) NOT NULL,
   KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
