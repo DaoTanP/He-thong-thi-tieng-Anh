@@ -46,7 +46,7 @@
 </head>
 
 <body onload="errorHandling(); setValueFromCookie(document.querySelector('#username')); setValueFromCookie(document.querySelector('#password'))">
-    <div class="container">
+    <div class="form-container">
         <div class="form">
             <span class="title">Đăng nhập</span>
             <div class="error-message">

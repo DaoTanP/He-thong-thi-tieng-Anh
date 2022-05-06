@@ -6,17 +6,21 @@ body {
     background-color: var(--primary);
 }
 
-.form {
+.form-container {
     position: relative;
     max-width: 430px;
     width: 100%;
     border-radius: .5em;
     background-color: #fff;
     box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.33);
+}
+
+.form-container .form {
+    width: 100%;
     padding: 30px;
 }
 
-.form .title {
+.form-container .form .title {
     position: relative;
     font-size: 27px;
     font-weight: 600;
