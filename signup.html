@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng kí tài khoản</title>
-    <link rel="stylesheet" href="logincss.css">
+    <link rel="stylesheet" href="./assets/css/login-signup.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -19,43 +19,40 @@
 
 <body>
     <div class="container">
-        <div class="forms">
-            <!-- Đăng ký -->
-            <div class="form">
-                <span class="title">Đăng kí</span>
+        <div class="form">
+            <span class="title">Đăng kí</span>
 
-                <form action="signup-validate.php" method="POST">
-                    <div class="input-field">
-                        <input type="text" name="Username" placeholder="Nhập họ tên" required>
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div class="input-field">
-                        <input type="text" name="Email" placeholder="Nhập email" required>
-                        <i class="fa-solid fa-envelope icon"></i>
-                    </div>
-
-                    <div class="input-field">
-                        <input type="password" name="Password" placeholder="Nhập mật khẩu" required>
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" name="Repassword" placeholder="Nhập lại mật khẩu" required>
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-
-                    <div class="input-field">
-                        <input class="btn btn-filled" type="submit" value="Đăng ký" required>
-                    </div>
-                </form>
-
-                <div class="login-signup">
-                    <span class="text"> Chấp nhận
-                        <a href="" class="text signup-text">điều khoản sử dụng</a>
-                    </span>
+            <form action="signup-validate.php" method="POST">
+                <div class="input-field">
+                    <input type="text" name="Username" placeholder="Nhập họ tên" required>
+                    <i class="fa-solid fa-user"></i>
                 </div>
 
+                <div class="input-field">
+                    <input type="text" name="Email" placeholder="Nhập email" required>
+                    <i class="fa-solid fa-envelope icon"></i>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" name="Password" placeholder="Nhập mật khẩu" required>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="Repassword" placeholder="Nhập lại mật khẩu" required>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="input-field">
+                    <input class="btn btn-filled" type="submit" value="Đăng ký" required>
+                </div>
+            </form>
+
+            <div class="login-signup">
+                <span class="text"> Chấp nhận
+                    <a href="" class="text signup-text">điều khoản sử dụng</a>
+                </span>
             </div>
+
         </div>
     </div>
 </body>

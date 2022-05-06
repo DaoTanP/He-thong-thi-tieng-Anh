@@ -6,21 +6,17 @@ body {
     background-color: var(--primary);
 }
 
-.container {
+.form {
     position: relative;
     max-width: 430px;
     width: 100%;
     border-radius: .5em;
     background-color: #fff;
     box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.33);
-}
-
-.container .form {
-    width: 100%;
     padding: 30px;
 }
 
-.container .form .title {
+.form .title {
     position: relative;
     font-size: 27px;
     font-weight: 600;
@@ -37,7 +33,7 @@ body {
     border-radius: 25px;
 }
 
-.error-message {
+.form .error-message {
     width: 100%;
     margin-top: 2rem;
     padding: .5em 1em;

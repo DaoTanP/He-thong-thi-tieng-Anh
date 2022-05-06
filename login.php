@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="logincss.css">
+    <link rel="stylesheet" href="./assets/css/login-signup.css">
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="./assets/img/new-lgoteam.png">
-    <script src="script.js"></script>
+    <script src="./source/javascript/cookieHandler.js"></script>
     <script>
         function showPassword() {
             let input = document.querySelector(".input-field>.password");
