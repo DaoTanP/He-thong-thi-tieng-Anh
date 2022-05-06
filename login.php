@@ -21,23 +21,23 @@
                 input.type = "text";
                 eyeIcon.classList.remove('fa-eye-slash');
                 eyeIcon.classList.add('fa-eye');
-            }
-            else {
+            } else {
                 input.type = "password";
                 eyeIcon.classList.remove('fa-eye');
                 eyeIcon.classList.add('fa-eye-slash');
             }
         }
+
         function setValueFromCookie(element) {
             if (element.type == 'password') {
                 element.value = getCookie('password');
-            }
-            else {
+            } else {
                 element.value = getCookie('username');
             }
         }
+
         function errorHandling() {
-            if (checkCookie("loginError"))
+            if (typeof error !== 'undefined')
                 document.querySelector('.error-message').style.display = 'block';
             else
                 document.querySelector('.error-message').style.display = 'none';
@@ -45,15 +45,14 @@
     </script>
 </head>
 
-<body
-    onload="errorHandling(); setValueFromCookie(document.querySelector('#username')); setValueFromCookie(document.querySelector('#password'))">
+<body onload="errorHandling(); setValueFromCookie(document.querySelector('#username')); setValueFromCookie(document.querySelector('#password'))">
     <div class="container">
         <div class="form">
             <span class="title">Đăng nhập</span>
             <div class="error-message">
                 <p>Tên đăng nhập hoặc mật khẩu không chính xác. Vui lòng thử lại!</p>
             </div>
-            <form action="login-validate.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="input-field">
                     <i class="fa-solid fa-envelope"></i>
                     <input type="text" name="tenDangNhap" id="username" placeholder="Tên đăng nhập" required>
@@ -61,8 +60,7 @@
 
                 <div class="input-field">
                     <i class="fa-solid fa-key"></i>
-                    <input type="password" name="matKhau" id="password" class="password" placeholder="Mật khẩu"
-                        required>
+                    <input type="password" name="matKhau" id="password" class="password" placeholder="Mật khẩu" required>
                     <i class="fa-solid fa-eye-slash password-check" onclick="showPassword()"></i>
                 </div>
 
@@ -88,3 +86,8 @@
 </body>
 
 </html>
+<div style="display: none;">
+    <?php
+    require 'login-validate.php';
+    ?>
+</div>

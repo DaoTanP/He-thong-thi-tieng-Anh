@@ -45,9 +45,9 @@ CREATE TABLE `cauhoi` (
 
 INSERT INTO `cauhoi` (`MaCauHoi`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`) VALUES
 (1, 'We\'d better get ___________ to check the wiring before we start decorating.', 'Từ vựng', 'an electrician', 'a mechanic', 'a consumer', 'an engineer', 'A'),
-(2, 'what would you ________ for dinner?', 'Loại từ', 'like', 'likes', 'to like', 'liking', 'A'),
+(2, 'What would you ________ for dinner?', 'Loại từ', 'like', 'likes', 'to like', 'liking', 'A'),
 (3, 'Choose a word that has different stress pattern', 'Trọng âm', 'athletics', 'hopelessness', 'resident', 'tolerance', 'A'),
-(4, 'Choose a word that has different stress pattern:', 'Trọng âm', 'develop', 'overall', 'commitment', 'investment', 'B');
+(4, 'Choose a word that has different stress pattern', 'Trọng âm', 'develop', 'overall', 'commitment', 'investment', 'B');
 
 -- --------------------------------------------------------
 

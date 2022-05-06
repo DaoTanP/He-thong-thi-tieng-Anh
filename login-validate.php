@@ -1,6 +1,8 @@
 <<?php
     // lấy dữ liệu từ client
-    var_dump($_POST);
+    if ($_SERVER["REQUEST_METHOD"] != "POST" && !isset($_POST['tenDangNhap']) && !isset($_POST['matKhau']))
+        return;
+
     $username = $_POST['tenDangNhap'];
     $password = $_POST['matKhau'];
 
@@ -16,13 +18,17 @@
             setcookie('username', $username, time() + 30 /*(86400 * 30)*/, '/');
             setcookie('password', $password, time() + 30 /*(86400 * 30)*/, '/');
         }
-        header("Location: index.html");
+        header("Location: index.php");
         // session_start();
         // $_SESSION['user']
         // echo '<a href = "baithi.php"> </a>';
         // unset($_SESSION['user']);
     } else {
-        header("Location: login.html");
-        setcookie('loginError', 'true', time() + 5 /*(86400 * 30)*/, '/');
+        //cach 1: tao cookie cho loi
+        //header("Location: login.html");
+        //setcookie('loginError', 'true', time() + 5 /*(86400 * 30)*/, '/');
+
+        //cach 2: echo 1 bien js roi doc bien do tren cung 1 trang
+        echo '<script>var error = true</script>';
     }
     ?>
