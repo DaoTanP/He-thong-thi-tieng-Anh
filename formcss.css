@@ -1,0 +1,81 @@
+
+body {
+    background-color: var(--primary-color-gr);
+}
+/* Form thi */
+
+
+/* Form chọn */
+.select-menu {
+   width: 500px;
+   margin: 150px auto ;
+}
+
+.select-menu {
+    margin-left: 50%px;
+}
+.select-menu .select-btn {
+    display: flex;
+    height: 50px;
+    background-color: #fff;
+    /* background-color: var(--primary-color-yl); */
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.select-btn i {
+    font-size: 20px;
+}
+
+.select-menu .options {
+    position: relative;
+    padding: 16px 0;
+    margin-top: 10px;
+    list-style: none;
+    font-size: 16px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0;
+}
+
+
+.options .option {
+    display: flex;
+    height: 55px;
+    padding: 0 16px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.options .option:hover {  
+    background-color: rgb(227, 221, 221);
+    /* border-radius: 3px; */
+}
+/* End Form chọn */
+
+.select-menu .skip {
+    background-color: var(--primary-color-yl);
+    height: 60px;
+    padding: 20px;
+    margin-top: 8px;
+    border-radius: 5px;
+    align-items: center;
+    font-size: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.btn-skip {
+    cursor: pointer;
+    /* border: none; */
+    background-color: var(--primary-color-yl);
+    margin-top: -3px;
+
+}
