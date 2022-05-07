@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `thita`
+-- Database: `hethongthitienganh`
 --
 
 -- --------------------------------------------------------
@@ -58,6 +58,7 @@ INSERT INTO `cauhoi` (`MaCauHoi`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `D
 CREATE TABLE `nguoidung` (
   `id` int(11) NOT NULL,
   `TenDangNhap` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MatKhau` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

@@ -15,19 +15,50 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@100;300;400;500;700&display=swap');
     </style>
+    <script>
+        function errorHandling() {
+            let messageBox = document.querySelector('.error-message');
+            let usernameErrorMessage = "<p>Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.</p>";
+            let emailErrorMessage = "<p>Email không hợp lệ. Vui lòng nhập lại.</p>";
+            let emailExistedErrorMessage = "<p>Email này đã được đăng kí. Vui lòng chọn Email khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.</p>";
+            let passwordErrorMessage = "<p>Mật khẩu không khớp. Vui lòng nhập lại.</p>";
+
+            if (typeof usernameError === 'undefined' &&
+                typeof emailError === 'undefined' &&
+                typeof existedEmailError === 'undefined' &&
+                typeof passwordError === 'undefined') {
+                messageBox.style.display = 'none';
+            } else {
+                if (typeof usernameError !== 'undefined') {
+                    messageBox.append(usernameErrorMessage);
+                }
+                if (typeof emailError !== 'undefined') {
+                    messageBox.append(emailErrorMessage);
+                }
+                if (typeof existedEmailError !== 'undefined') {
+                    messageBox.append(emailExistedErrorMessage);
+                }
+                if (typeof passwordError !== 'undefined') {
+                    messageBox.append(emailExistedErrorMessage);
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <div class="form-container">
+<body onload="errorHandling();">
+    <div class=" form-container">
         <div class="form">
             <span class="title">Đăng kí</span>
+            <div class="error-message">
+            </div>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="input-field">
-                    <input type="text" name="Username" placeholder="Nhập họ tên" required>
+                    <input type="text" name="Username" placeholder="Nhập tên đăng nhập" required>
                     <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="Email" placeholder="Nhập email" required>
+                    <input type="email" name="Email" placeholder="Nhập email" required>
                     <i class="fa-solid fa-envelope icon"></i>
                 </div>
                 <div class="input-field">
@@ -40,6 +71,7 @@
                 </div>
                 <input class="btn btn-filled" type="submit" value="Đăng kí" required>
             </form>
+            <p class="display-block">Đã có tài khoản? <a href="login.php" class="text signup-text">Đăng nhập</a>.</p>
         </div>
     </div>
 </body>

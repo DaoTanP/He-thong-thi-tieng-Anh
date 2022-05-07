@@ -74,13 +74,7 @@
 
                 <input class="btn btn-filled" type="submit" value="Đăng nhập">
             </form>
-
-            <div class="login-signup">
-                <span class="text"> Chưa có tài khoản?
-                    <a href="signup.html" class="text signup-text">Đăng kí ngay</a>
-                </span>
-            </div>
-
+            <p class="display-block">Chưa có tài khoản? <a href="signup.php" class="text signup-text">Đăng kí ngay</a>.</p>
         </div>
     </div>
 </body>

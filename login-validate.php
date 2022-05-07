@@ -6,6 +6,8 @@
     $username = $_POST['tenDangNhap'];
     $password = $_POST['matKhau'];
 
+    $password = md5($password);
+
     //kết nối với database 
     $conn = mysqli_connect("localhost", "root", "", "hethongthitienganh") or die('khong ket noi duoc.');
     mysqli_query($conn, "SET NAMES 'utf8'");

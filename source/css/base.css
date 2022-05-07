@@ -29,6 +29,11 @@ hr {
     background-color: transparent;
 }
 
+.display-block {
+    display: block;
+    text-align: center;
+}
+
 .container {
     max-width: calc(100% - 4rem);
     margin: 2rem auto;

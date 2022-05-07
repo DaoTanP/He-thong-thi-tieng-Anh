@@ -1,11 +1,11 @@
-<div class="grid-container header">
+<div class="grid-container header" id="header">
     <a href="#" class="grid-child-left">
         <img class="logo-header" src="?" alt="logo-team4">
     </a>
     <nav class="navbar full-height grid-child-stretch">
         <ul class="navbar-list grid-container full-height">
             <li>
-                <a href="" class="disabled"><i class="icon fa-solid fa-house"></i>Trang chủ</a>
+                <a href=""><i class="icon fa-solid fa-house"></i>Trang chủ</a>
             </li>
             <li>
                 <a href=""><i class="icon fa-solid fa-file"></i>Bài thi</a>
@@ -26,3 +26,19 @@
         <a href="login.php" class="btn btn-filled">Đăng nhập</a>
     </div>
 </div>
+<script>
+    function setNavActive(pageName) {
+        let element = header.querySelectorAll('.navbar-list a');
+        var activePage;
+        for (let index = 0; index < element.length; index++) {
+            if (element[index].textContent == pageName) {
+                activePage = element[index];
+                break;
+            }
+        }
+
+        if (typeof activePage !== 'undefined') {
+            activePage.classList.toggle('disabled');
+        }
+    }
+</script>

@@ -16,6 +16,13 @@
 <body>
     <?php
     require './source/html/header.html';
+    ?>
+    <script>
+        var pageName = 'Trang chủ';
+        setNavActive(pageName);
+    </script>
+
+    <?php
     require './source/html/carousel.html';
     require './source/html/home.html';
     require './source/html/footer.html';
