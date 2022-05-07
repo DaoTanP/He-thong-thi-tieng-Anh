@@ -74,6 +74,7 @@ hr {
 .card-media {
     width: 150px;
     height: 150px;
+    border-radius: .25rem;
     object-fit: cover;
     place-self: center;
 }
