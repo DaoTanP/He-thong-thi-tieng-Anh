@@ -21,18 +21,15 @@
     <div class="form-container">
         <div class="form">
             <span class="title">Đăng kí</span>
-
-            <form action="signup-validate.php" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="input-field">
                     <input type="text" name="Username" placeholder="Nhập họ tên" required>
                     <i class="fa-solid fa-user"></i>
                 </div>
-
                 <div class="input-field">
                     <input type="text" name="Email" placeholder="Nhập email" required>
                     <i class="fa-solid fa-envelope icon"></i>
                 </div>
-
                 <div class="input-field">
                     <input type="password" name="Password" placeholder="Nhập mật khẩu" required>
                     <i class="fa-solid fa-lock"></i>
@@ -41,20 +38,15 @@
                     <input type="password" name="Repassword" placeholder="Nhập lại mật khẩu" required>
                     <i class="fa-solid fa-lock"></i>
                 </div>
-
-                <div class="input-field">
-                    <input class="btn btn-filled" type="submit" value="Đăng ký" required>
-                </div>
+                <input class="btn btn-filled" type="submit" value="Đăng kí" required>
             </form>
-
-            <div class="login-signup">
-                <span class="text"> Chấp nhận
-                    <a href="" class="text signup-text">điều khoản sử dụng</a>
-                </span>
-            </div>
-
         </div>
     </div>
 </body>
 
 </html>
+<div style="display: none;">
+    <?php
+    require 'signup-validate.php';
+    ?>
+</div>

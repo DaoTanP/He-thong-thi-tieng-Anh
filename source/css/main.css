@@ -70,9 +70,10 @@
     color: var(--primary-dark);
     outline: 2px solid var(--primary);
 }
-.navbar-list a:disabled {
+.navbar-list a.disabled {
     background-color: var(--primary);
     color: #fff;
+    pointer-events: none;
 }
 
 /* outlined button recommended setting: <button class="btn color-blue bordered-xxs pad-sm rounded-xs">Button</button> */
