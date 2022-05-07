@@ -14,33 +14,25 @@
 </head>
 
 <body>
-    <div class="select-menu">
-        <div class="select-btn">
-            <p class="Select-text">What would you......for dinner ?</p>
-        </div>
+    <div class="container-sm">
+        <form action="" method="post" class="question-container">
+            <p class="question">What would you __________ for dinner ?</p>
+            <div class="answer-container">
+                <input type="radio" name="Answer" id="A">
+                <label for="A">like</label>
+                <input type="radio" name="Answer" id="B">
+                <label for="B">likes</label>
+                <input type="radio" name="Answer" id="C">
+                <label for="C">to like</label>
+                <input type="radio" name="Answer" id="D">
+                <label for="D">liking</label>
+            </div>
+            <div class="exam-nav">
+                <a class="btn btn-filled btn-prev"><i class="fa-solid fa-circle-arrow-left"></i></a>
+                <a class="btn btn-filled btn-next"><i class="fa-solid fa-circle-arrow-right"></i></a>
+            </div>
+        </form>
 
-        <ul class="options">
-            <li class="option">
-                <input type="radio" id="check" name="myAns">
-                <label for="check">Like</label>
-            </li>
-            <li class="option">
-                <input type="radio" id="check" name="myAns">
-                <label for="check">Likes</label>
-            </li>
-            <li class="option">
-                <input type="radio" id="check" name="myAns">
-                <label for="check">To like</label>
-            </li>
-            <li class="option">
-                <input type="radio" id="check" name="myAns">
-                <label for="check">Liking</label>
-            </li>
-        </ul>
-        <div class="skip">
-            <button class="btn-skip"><i class="back fa-solid fa-circle-arrow-left"></i></button>
-            <button class="btn-skip"><i class="next fa-solid fa-circle-arrow-right"></i></button>
-        </div>
     </div>
 </body>
 
