@@ -47,6 +47,11 @@
         setValueFromCookie(document.querySelector('#password'));
     </script>
 </head>
+<div style="display: none;">
+    <?php
+    require 'login-validate.php';
+    ?>
+</div>
 
 <body>
     <div class="form-container">
@@ -83,8 +88,3 @@
 </body>
 
 </html>
-<div style="display: none;">
-    <?php
-    require 'login-validate.php';
-    ?>
-</div>
