@@ -18,7 +18,7 @@ const COLOR_CODES = {
     }
 };
 
-let timeLimit = 25;
+let timeLimit = 600;
 let timeLeftDisplay = timeLimit;
 let remainingPathColor = COLOR_CODES.info.color;
 
@@ -53,45 +53,24 @@ function onTimesUp(timerInterval) {
 }
 
 function startTimer(timeLimit) {
-    let timePassed = 0;
-    if (localStorage.time > timeLimit)
-        localStorage.time = 0;
     let timeLeft = timeLimit;
+    if (parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
+        localStorage.time = (Date.now() / 1000) + timeLimit;
+
     let timerInterval = setInterval(() => {
-        timePassed += 1;
-        localStorage.time++;
-        timeLeft = timeLimit - parseInt(localStorage.time, 10);
+        timeLeft = Math.round(parseInt(localStorage.time, 10) - (Date.now() / 1000));
         document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
         setCircleDasharray(timeLeft);
         setRemainingPathColor(timeLeft);
 
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             onTimesUp(timerInterval);
         }
     }, 1000);
 }
 
-function countdown(timeLimit) {
-    time = parseInt(localStorage.time);
-
-    if (isNaN(time) || time > timeLimit) {
-        alert("An error occured: time left variable is corrupted, resetting timer");
-        localStorage.time = timeLimit;
-        countdown();
-        return null;
-    }
-
-    if (time <= 0) {
-        alert("You found an easter egg!");
-        return null;
-    }
-
-    document.getElementById("base-timer-label").innerHTML = formatTime(localStorage.time);
-    setCircleDasharray(localStorage.time);
-    setRemainingPathColor(localStorage.time);
-    time--;
-    localStorage.time = time;
-    setTimeout('countdown()', 1000);
+function resetTimer(timeLimit) {
+    localStorage.time = (Date.now() / 1000) + timeLimit;
 }
 
 function formatTime(time) {

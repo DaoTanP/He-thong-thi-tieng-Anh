@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata');
 :root {
     --size: 1rem;
 }
 .base-timer {
     position: relative;
-    width: calc(var(--size) * 3);
-    height: calc(var(--size) * 3);
+    width: calc(var(--size) * 4);
+    height: calc(var(--size) * 4);
     margin: auto;
 }
 
@@ -53,4 +54,5 @@
     align-items: center;
     justify-content: center;
     font-size: var(--size);
+    font-family: 'Inconsolata', monospace;
 }

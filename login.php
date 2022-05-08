@@ -42,18 +42,10 @@
             else
                 document.querySelector('.error-message').style.display = 'none';
         }
-        errorHandling();
-        setValueFromCookie(document.querySelector('#username'));
-        setValueFromCookie(document.querySelector('#password'));
     </script>
 </head>
-<div style="display: none;">
-    <?php
-    require 'login-validate.php';
-    ?>
-</div>
 
-<body>
+<body onload="errorHandling(); setValueFromCookie(document.querySelector('#username')); setValueFromCookie(document.querySelector('#password'))">
     <div class="form-container">
         <div class="form">
             <span class="title">Đăng nhập</span>
@@ -88,3 +80,8 @@
 </body>
 
 </html>
+<div style="display: none;">
+    <?php
+    require 'login-validate.php';
+    ?>
+</div>
