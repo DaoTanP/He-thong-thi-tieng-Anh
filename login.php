@@ -42,10 +42,13 @@
             else
                 document.querySelector('.error-message').style.display = 'none';
         }
+        errorHandling();
+        setValueFromCookie(document.querySelector('#username'));
+        setValueFromCookie(document.querySelector('#password'));
     </script>
 </head>
 
-<body onload="errorHandling(); setValueFromCookie(document.querySelector('#username')); setValueFromCookie(document.querySelector('#password'))">
+<body>
     <div class="form-container">
         <div class="form">
             <span class="title">Đăng nhập</span>

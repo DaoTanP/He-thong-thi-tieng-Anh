@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="formcss.css">
+    <link rel="stylesheet" href="timer.css">
     <link rel="stylesheet" href="./source/css/base.css">
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -16,7 +17,9 @@
 <body>
     <div class="container-sm">
         <form action="" method="post" class="question-container">
-            <p class="question">What would you __________ for dinner ?</p>
+            <div class="question-number">1</div>
+            <div id="timer"></div>
+            <p class="question">What would you __________ for dinner?</p>
             <div class="answer-container">
                 <input type="radio" name="Answer" id="A">
                 <label for="A">like</label>
@@ -37,3 +40,4 @@
 </body>
 
 </html>
+<script src="timer.js"></script>

@@ -7,11 +7,23 @@ body {
     place-items: center;
 }
 .question-container {
+    position: relative;
     width: 500px;
     background-color: #fff;
     padding: 1rem;
     border-radius: .5rem;
-    box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 .2rem .4rem #00000050, 0 0 .2rem #000000;
+}
+.question-number {
+    background-color: var(--secondary);
+    position: absolute;
+    width: 2rem;
+    height: 3rem;
+    padding-top: 1rem;
+    top: 0;
+    left: 1rem;
+    text-align: center;
+    font-weight: 700;
 }
 
 .question {
@@ -32,7 +44,7 @@ body {
     font-size: 1rem;
     display: block;
     margin: .5rem 0;
-    padding: .5rem 2rem;
+    padding: 1rem 2rem;
     border-radius: .5rem;
     user-select: none;
     cursor: pointer;
@@ -61,15 +73,46 @@ body {
     transform: scale(3);
 }
 .answer-container input[type="radio"]:checked+label {
+    color: var(--primary);
+    font-weight: 700;
+    outline: 2px solid var(--primary);
+    transition: outline 0s;
+}
+.answer-container input[type="radio"]:checked+label::after {
+    transform: scale(1.5);
+}
+.answer-container input[type="radio"]+label.answer-right {
     background-color: var(--primary);
     color: #fff;
     box-shadow: 0 .25rem .5rem var(--primary);
 }
-.answer-container input[type="radio"]:checked+label::after {
+.answer-container input[type="radio"]+label.answer-right::after {
     content: '\2713';
-    /* border: 2px solid var(--primary); */
     border: none;
-    transform: scale(2);
+    animation: answer-mark .25s cubic-bezier(0.25, 0, 1, 0.25) forwards;
+}
+.answer-container input[type="radio"]+label.answer-wrong {
+    background-color: var(--red);
+    color: #fff;
+    box-shadow: 0 .25rem .5rem var(--red);
+}
+.answer-container input[type="radio"]+label.answer-wrong::after {
+    content: '\2717';
+    border: none;
+    left: .5rem;
+    bottom: 30%;
+    animation: answer-mark .25s cubic-bezier(0.25, 0, 1, 0.25) forwards;
+}
+
+@keyframes answer-mark {
+    from {
+        transform: scale(10);
+        opacity: 0.05;
+    }
+    to {
+        transform: scale(2);
+        opacity: 1;
+    }
 }
 
 .exam-nav {
