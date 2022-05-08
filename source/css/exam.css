@@ -148,3 +148,11 @@ body {
 .btn-next {
     margin-left: auto;
 }
+.question-table {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}

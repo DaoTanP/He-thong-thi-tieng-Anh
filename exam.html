@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="exam.css">
-    <link rel="stylesheet" href="timer.css">
+    <title>Bài thi</title>
+    <link rel="stylesheet" href="./source/css/exam.css">
+    <link rel="stylesheet" href="./source/css/timer.css">
     <link rel="stylesheet" href="./source/css/base.css">
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -16,7 +16,7 @@
 
 <body>
     <div class="container">
-        <form action="" method="post" class="question-container">
+        <form action="index.php" method="post" class="question-container" id="exam">
             <div class="question-number">1</div>
             <div id="timer"></div>
             <p class="question">What would you __________ for dinner?</p>
@@ -34,8 +34,18 @@
     </div>
     <div class="exam-nav-container">
         <div class="nav-btn-container">
-            <a class="btn btn-filled btn-prev"><i class="fa-solid fa-circle-arrow-left"></i></a>
-            <a class="btn btn-filled btn-next"><i class="fa-solid fa-circle-arrow-right"></i></a>
+            <a href="" class="btn btn-filled btn-prev"><i class="fa-solid fa-circle-arrow-left"></i></a>
+            <button type="submit" form="exam" class="btn btn-filled">Nộp bài</button>
+            <a href="" class="btn btn-filled btn-next"><i class="fa-solid fa-circle-arrow-right"></i></a>
+        </div>
+        <div class="question-table">
+            <a href="" class="btn btn-filled">1</a>
+            <a href="" class="btn btn-filled">2</a>
+            <a href="" class="btn btn-filled">3</a>
+            <a href="" class="btn btn-filled">4</a>
+            <a href="" class="btn btn-filled">5</a>
+            <a href="" class="btn btn-filled">6</a>
+            <a href="" class="btn btn-filled">7</a>
         </div>
     </div>
 </body>
