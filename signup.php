@@ -18,10 +18,10 @@
     <script>
         function errorHandling() {
             let messageBox = document.querySelector('.error-message');
-            let usernameErrorMessage = "<p>Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.</p>";
-            let emailErrorMessage = "<p>Email không hợp lệ. Vui lòng nhập lại.</p>";
-            let emailExistedErrorMessage = "<p>Email này đã được đăng kí. Vui lòng chọn Email khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.</p>";
-            let passwordErrorMessage = "<p>Mật khẩu không khớp. Vui lòng nhập lại.</p>";
+            let usernameErrorMessage = "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.";
+            let emailErrorMessage = "Email không hợp lệ. Vui lòng nhập lại.";
+            let emailExistedErrorMessage = "Email này đã được đăng kí. Vui lòng chọn Email khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.";
+            let passwordErrorMessage = "Mật khẩu không khớp. Vui lòng nhập lại.";
 
             if (typeof usernameError === 'undefined' &&
                 typeof emailError === 'undefined' &&
@@ -30,18 +30,24 @@
                 messageBox.style.display = 'none';
             } else {
                 if (typeof usernameError !== 'undefined') {
-                    messageBox.append(usernameErrorMessage);
+                    createElement('p', usernameErrorMessage, messageBox);
                 }
                 if (typeof emailError !== 'undefined') {
-                    messageBox.append(emailErrorMessage);
+                    createElement('p', emailErrorMessage, messageBox);
                 }
                 if (typeof existedEmailError !== 'undefined') {
-                    messageBox.append(emailExistedErrorMessage);
+                    createElement('p', emailExistedErrorMessage, messageBox);
                 }
                 if (typeof passwordError !== 'undefined') {
-                    messageBox.append(emailExistedErrorMessage);
+                    createElement('p', passwordErrorMessage, messageBox);
                 }
             }
+        }
+
+        function createElement(tag, content, parent) {
+            var e = document.createElement(tag);
+            e.innerHTML = content;
+            parent.appendChild(e);
         }
     </script>
 </head>
