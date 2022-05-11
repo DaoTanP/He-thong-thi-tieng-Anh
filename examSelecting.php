@@ -18,13 +18,13 @@
     require './source/html/header.html';
     ?>
     <script>
-        var pageName = 'Trang chủ';
+        var pageName = 'Bài thi';
         setNavActive(pageName);
     </script>
 
     <?php
     require './source/html/carousel.html';
-    // require './source/html/examSelect.html';
+    require './source/html/examSelect.html';
     require './source/html/footer.html';
     ?>
 </body>

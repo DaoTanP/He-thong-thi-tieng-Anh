@@ -37,6 +37,10 @@ hr {
     text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .container {
     max-width: calc(100% - 4rem);
     margin: 2rem auto;
@@ -78,6 +82,9 @@ hr {
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr 3fr;
+}
+.card:hover {
+    box-shadow: 0 .5rem 1rem #666, 0 0 .5rem #aaa;
 }
 .card-media {
     width: 150px;
