@@ -15,4 +15,38 @@ $numberOfRowDB = mysqli_query($conn, $command2)->num_rows;
 $numberOfExam = ceil($numberOfRowDB / $questionPerExam);
 $numberOfPage = ceil($numberOfExam / $examPerPage);
 
-//chua xong
+//lay cau hoi ngau nhien
+$command3 = "SELECT * FROM `cauhoi` ORDER BY RAND() LIMIT $questionPerExam";
+$result3 = mysqli_query($conn, $command3);
+$result1 = mysqli_query($conn, $command1);
+
+class Question
+{
+    public $question;
+    public $answer = array();
+    // public $answerA, $answerB, $answerC, $answerD;
+    public $rightAnswer;
+
+    function setValue($question, $answer, $rightAnswer)
+    {
+        $this->question = $question;
+        $this->answer = $answer;
+        // $this->answerA = $answerA;
+        // $this->answerB = $answerB;
+        // $this->answerC = $answerC;
+        // $this->answerD = $answerD;
+        $this->rightAnswer = $rightAnswer;
+    }
+}
+
+$question = new Question();
+$arrIndex = 0;
+echo '<script>const questionArr = [];';
+
+while ($row = mysqli_fetch_row($result3)) {
+    $question->setValue($row[0], array($row[2], $row[3], $row[4], $row[5]), $row[6]);
+    echo 'questionArr[' . $arrIndex . '] = ' . json_encode($question) . ';';
+    $arrIndex++;
+}
+
+echo '</script>';
