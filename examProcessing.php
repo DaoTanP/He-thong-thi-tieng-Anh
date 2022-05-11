@@ -1,4 +1,5 @@
 <?php
+//trang tinh diem (copy file cu chua sua)
 // ket noi du lieu
 $conn = mysqli_connect("localhost", "root", "", "hethongthitienganh") or die("khong ket noi");
 mysqli_query($conn, "set names 'utf8'");
