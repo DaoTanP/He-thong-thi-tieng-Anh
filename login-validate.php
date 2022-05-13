@@ -20,11 +20,16 @@
             setcookie('username', $username, time() + 30 /*(86400 * 30)*/, '/');
             setcookie('password', $password, time() + 30 /*(86400 * 30)*/, '/');
         }
+        session_start();
+        $_SESSION['username'] = $username;
         header("Location: index.php");
+<<<<<<< HEAD
         session_start();
         //$_SESSION['user'];
         // echo '<a href = "baithi.php"> </a>';
         // unset($_SESSION['user']);
+=======
+>>>>>>> b70dfbf1c715009a9ffde570dc24104d24744316
     } else {
         //cach 1: tao cookie cho loi
         //header("Location: login.html");

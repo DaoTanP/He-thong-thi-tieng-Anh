@@ -21,9 +21,12 @@
             </li>
         </ul>
     </nav>
-    <div class="flex-container full-height grid-child-right">
+    <div id="login-signup-btn" class="flex-container full-height grid-child-right">
         <a href="signup.php" class="btn">Đăng kí</a>
         <a href="login.php" class="btn btn-filled">Đăng nhập</a>
+    </div>
+    <div id="user-account" class="flex-container full-height grid-child-right hidden">
+        <a href="logout.php">Tên người dùng</a>
     </div>
 </div>
 <script>
@@ -41,4 +44,23 @@
             activePage.classList.toggle('disabled');
         }
     }
+
+    function setUserAccount(username) {
+        let btnGroup = document.getElementById('login-signup-btn');
+        let userAccount = document.getElementById('user-account');
+        if (typeof username !== 'undefined' && username !== null) {
+            btnGroup.classList.add('hidden');
+            userAccount.classList.remove('hidden');
+            userAccount.querySelector('a').textContent = username + " | Đăng xuất";
+        } else {
+            btnGroup.classList.remove('hidden');
+            userAccount.classList.add('hidden');
+        }
+    }
 </script>
+<?php
+if (isset($_SESSION['username'])) {
+    echo 'var username = ' . $_SESSION['username'] . ';
+        setUserAccount(username);';
+}
+?>
