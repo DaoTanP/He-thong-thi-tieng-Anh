@@ -15,7 +15,7 @@
 
 <body>
     <?php
-    require './source/html/header.html';
+    require './header.php';
     ?>
     <script>
         var pageName = 'Trang chủ';
