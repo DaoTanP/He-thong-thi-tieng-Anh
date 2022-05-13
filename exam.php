@@ -16,7 +16,7 @@
 
 <body>
     <div class="container">
-        <form action="index.php" method="post" class="question-container" id="exam">
+        <form action="examSelect.php" method="post" class="question-container" id="exam">
             <div id="timer"></div>
             <div class="container" id="exam-ready">
                 <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>
@@ -91,7 +91,7 @@ require 'examSelect.php';
         let questionContainer = document.getElementById("question-holder-container");
         var questionInstance;
         for (let i = 0; i < questionArr.length; i++) {
-            console.log(questionArr[i].question);
+            console.log(questionArr[i].question);      
             questionInstance = document.createElement("div");
             questionInstance.classList.add('question-holder');
             questionInstance.classList.add('hidden');

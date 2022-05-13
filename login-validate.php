@@ -21,8 +21,8 @@
             setcookie('password', $password, time() + 30 /*(86400 * 30)*/, '/');
         }
         header("Location: index.php");
-        // session_start();
-        // $_SESSION['user']
+        session_start();
+        //$_SESSION['user'];
         // echo '<a href = "baithi.php"> </a>';
         // unset($_SESSION['user']);
     } else {
