@@ -1,4 +1,5 @@
 <<?php
+    session_start();
     // lấy dữ liệu từ client
     if ($_SERVER["REQUEST_METHOD"] != "POST" && !isset($_POST['tenDangNhap']) && !isset($_POST['matKhau']))
         return;
@@ -20,7 +21,6 @@
             setcookie('username', $username, time() + 30 /*(86400 * 30)*/, '/');
             setcookie('password', $password, time() + 30 /*(86400 * 30)*/, '/');
         }
-        session_start();
         $_SESSION['username'] = $username;
         header("Location: index.php");
     } else {

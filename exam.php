@@ -16,7 +16,7 @@
 
 <body>
     <div class="container">
-        <form action="index.php" method="post" class="question-container" id="exam">
+        <form action="examSelect.php" method="post" class="question-container" id="exam">
             <div id="timer"></div>
             <div class="container" id="exam-ready">
                 <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>

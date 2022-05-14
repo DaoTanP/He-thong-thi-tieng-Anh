@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <div class="grid-container header" id="header">
     <a href="#" class="grid-child-left">
         <img class="logo-header" src="?" alt="logo-team4">
@@ -57,10 +60,12 @@
             userAccount.classList.add('hidden');
         }
     }
-</script>
-<?php
-if (isset($_SESSION['username'])) {
-    echo 'var username = ' . $_SESSION['username'] . ';
+    <?php
+    if (!empty($_SESSION['username'])) {
+        echo 'var username = "' . $_SESSION['username'] . '";
         setUserAccount(username);';
-}
-?>
+    } else {
+        echo 'var username = null';
+    }
+    ?>
+</script>
