@@ -50,12 +50,12 @@ while ($row = mysqli_fetch_row($result3)) {
 }
 //chấm điểm
 $score = 0;
-for ($i=0; $i < 40; $i++) { 
+for ($i = 0; $i < 40; $i++) {
     $cauHoi = $_POST["questionArr[$i].question"];
-    $dapAn = $_POST["question-${$i+1}-answer"];
-    
+    $dapAn = $_POST["question-" . ${$i + 1} . "-answer"];
+
     while ($row = mysqli_fetch_row($result3)) {
-        if($dapAn== $row[6] &&  $cauHoi == $row[1])
+        if ($dapAn == $row[6] &&  $cauHoi == $row[1])
             $score += 0.25;
     }
 }
