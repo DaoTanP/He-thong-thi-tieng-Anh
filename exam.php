@@ -91,7 +91,7 @@ require 'examSelect.php';
         let questionContainer = document.getElementById("question-holder-container");
         var questionInstance;
         for (let i = 0; i < questionArr.length; i++) {
-            console.log(questionArr[i].question);
+            console.log(questionArr[i].question);      
             questionInstance = document.createElement("div");
             questionInstance.classList.add('question-holder');
             questionInstance.classList.add('hidden');
