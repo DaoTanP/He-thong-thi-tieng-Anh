@@ -150,10 +150,11 @@ button[type='submit'] {
     font-size: 1.25rem;
 }
 .question-table {
-    max-width: 50%;
+    max-width: 75%;
     margin: auto;
     margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
     gap: 1rem;
 }

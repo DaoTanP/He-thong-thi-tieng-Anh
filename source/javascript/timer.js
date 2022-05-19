@@ -18,11 +18,22 @@ const COLOR_CODES = {
     }
 };
 
-let timeLimit = 60;
-let timeLeftDisplay = timeLimit;
+let timeLimit;
+let timeLeft;
+let timerInterval;
+let timeUpEvent; //a function to be called when time up
 let remainingPathColor = COLOR_CODES.info.color;
 
-document.getElementById("timer").innerHTML = `
+function initTimer(time) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    while (timerInterval !== null) {
+        timerInterval = null;
+    }
+    timeLimit = time;
+    timeLeft = timeLimit;
+
+    document.getElementById("timer").innerHTML = `
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <g class="base-timer__circle">
@@ -41,30 +52,33 @@ document.getElementById("timer").innerHTML = `
     </g>
   </svg>
   <span id="base-timer-label" class="base-timer__label">${formatTime(
-    timeLeftDisplay
-)}</span>
+        timeLeft
+    )}</span>
 </div>
 `;
-
-startTimer(timeLimit);
-
-function onTimesUp(timerInterval) {
-    clearInterval(timerInterval);
 }
 
-function startTimer(timeLimit) {
-    let timeLeft = timeLimit;
-    if (parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
+function destroyTimer() {
+    document.getElementById("timer").innerHTML = ``;
+}
+
+const onTimesUp = (func) => {
+    clearInterval(timerInterval);
+    func();
+}
+
+function startTimer() {
+    if (localStorage.time == 'NaN' || parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
         localStorage.time = (Date.now() / 1000) + timeLimit;
 
-    let timerInterval = setInterval(() => {
+    timerInterval = setInterval(() => {
         timeLeft = Math.round(parseInt(localStorage.time, 10) - (Date.now() / 1000));
         document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
         setCircleDasharray(timeLeft);
         setRemainingPathColor(timeLeft);
 
         if (timeLeft <= 0) {
-            onTimesUp(timerInterval);
+            onTimesUp(timeUpEvent);
         }
     }, 1000);
 }

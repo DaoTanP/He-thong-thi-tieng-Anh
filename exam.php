@@ -12,36 +12,23 @@
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <script src="./source/javascript/helper.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <form action="examSelect.php" method="post" class="question-container" id="exam">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="question-container" id="exam">
             <div id="timer"></div>
-            <div class="container" id="exam-ready">
+            <div class="container" id="exam-info">
                 <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>
                 <p>Khi bạn đã sẵn sàng, nhấn bắt đầu</p>
 
-                <button onclick="startTakingExam(); resetTimer(40*60)" class="btn btn-filled" type="button">Bắt
+                <button onclick="startTakingExam(); startTimer()" class="btn btn-filled" type="button">Bắt
                     đầu</button>
             </div>
             <div id="question-holder-container">
 
             </div>
-            <template id="question-template">
-                <div class="question-number">1</div>
-                <p class="question">What would you __________ for dinner?</p>
-                <div class="answer-container">
-                    <input type="radio" name="Answer" id="A">
-                    <label for="A">like</label>
-                    <input type="radio" name="Answer" id="B">
-                    <label for="B">likes</label>
-                    <input type="radio" name="Answer" id="C">
-                    <label for="C">to like</label>
-                    <input type="radio" name="Answer" id="D">
-                    <label for="D">liking</label>
-                </div>
-            </template>
             <hr>
             <div class="nav-btn-container">
                 <button type="button" onclick="showQuestion(currentQuestion-1)" class="btn btn-prev"><i class="fa-solid fa-circle-arrow-left"></i></button>
@@ -71,10 +58,27 @@ require 'examSelect.php';
 
 <script src="./source/javascript/timer.js"></script>
 <script>
+    initTimer(questionArr.length * 60);
+    resetTimer(15);
     let currentQuestion = -1;
+    timeUpEvent = () => {
+        document.getElementById("exam").submit();
+    }
 
-    function startTakingExam(timeLimit = 40 * 60) {
-        document.getElementById('exam-ready').style.display = 'none';
+    preventGoBack_ToThisPage();
+
+    if (typeof score !== 'undefined' && typeof soCauDung !== 'undefined') {
+        destroyTimer();
+        let info = document.getElementById('exam-info');
+        info.style.display = 'block';
+        info.innerHTML = `
+            <p>Bài làm đúng ${soCauDung} câu, số điểm đạt được: </p>
+            <h3>${score}</h3>
+        `;
+    }
+
+    function startTakingExam() {
+        document.getElementById('exam-info').style.display = 'none';
         initQuestion();
         showQuestion();
     }
@@ -85,13 +89,13 @@ require 'examSelect.php';
             questionContainer.children[currentQuestion].classList.add('hidden');
         questionContainer.children[questionNumber].classList.remove('hidden');
         currentQuestion = questionNumber;
+        localStorage.setItem('currentQuestion', currentQuestion.toString());
     }
 
     function initQuestion() {
         let questionContainer = document.getElementById("question-holder-container");
         var questionInstance;
         for (let i = 0; i < questionArr.length; i++) {
-            console.log(questionArr[i].question);      
             questionInstance = document.createElement("div");
             questionInstance.classList.add('question-holder');
             questionInstance.classList.add('hidden');
@@ -99,23 +103,17 @@ require 'examSelect.php';
             <div class="question-number">${i+1}</div>
                 <p class="question">${questionArr[i].question}</p>
                 <div class="answer-container">
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-A">
+                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-A" value="A">
                     <label for="question-${i+1}-A">${questionArr[i].answer[0]}</label>
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-B">
+                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-B" value="B">
                     <label for="question-${i+1}-B">${questionArr[i].answer[1]}</label>
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-C">
+                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-C" value="C">
                     <label for="question-${i+1}-C">${questionArr[i].answer[2]}</label>
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-D">
+                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-D" value="D">
                     <label for="question-${i+1}-D">${questionArr[i].answer[3]}</label>
                 </div>
             `;
             questionContainer.appendChild(questionInstance);
-        }
-    }
-
-    function removeAllChilds(parent) {
-        while (parent.lastChild) {
-            parent.removeChild(parent.lastChild);
         }
     }
 </script>

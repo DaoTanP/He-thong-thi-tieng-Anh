@@ -1,0 +1,11 @@
+create or replace procedure update_maCauHoi() begin
+    for row in (
+        select * from cauhoi WHERE MaCauHoi is null
+    ) do     
+    	IF
+        UPDATE cauhoi SET MaCauHoi = LAST_INSERT_ID()
+            WHERE person.id = var_user.id_person;
+    end for;
+end;
+
+call _tmp_procedure();

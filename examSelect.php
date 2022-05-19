@@ -38,27 +38,28 @@ class Question
         $this->rightAnswer = $rightAnswer;
     }
 }
-
+$rightAnswerArr = array();
 $question = new Question();
 $arrIndex = 0;
 echo '<script>const questionArr = [];';
 
-while ($row = mysqli_fetch_row($result3)) {
-    $question->setValue($row[0], array($row[2], $row[3], $row[4], $row[5]), $row[6]);
-    echo 'questionArr[' . $arrIndex . '] = ' . json_encode($question) . ';';
-    $arrIndex++;
+while ($row = mysqli_fetch_array($result1)) {
+    array_push($rightAnswerArr, $row['DapAnDung']);
+    $question->setValue($row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null);
+    echo 'questionArr[' . $arrIndex++ . '] = ' . json_encode($question) . ';';
 }
-//chấm điểm
-$score = 0;
-for ($i = 0; $i < 40; $i++) {
-    $cauHoi = $_POST["questionArr[$i].question"];
-    $dapAn = $_POST["question-" . ${$i + 1} . "-answer"];
-
-    while ($row = mysqli_fetch_row($result3)) {
-        if ($dapAn == $row[6] &&  $cauHoi == $row[1])
-            $score += 0.25;
-    }
-}
-echo $score;
-
 echo '</script>';
+
+if (!empty($_POST)) {
+    $score = 0;
+    $soCauDung = 0;
+    for ($i = 0; $i < $arrIndex; $i++) {
+        if (isset($_POST["question-" . ($i + 1) . "-answer"]) && $rightAnswerArr[$i] == $_POST["question-" . ($i + 1) . "-answer"]) {
+            $score += 10 / $arrIndex;
+            $soCauDung++;
+        }
+    }
+    echo '<script>const score = ' . $score . ';
+                  const soCauDung = ' . $soCauDung . ';
+          </script>';
+}
