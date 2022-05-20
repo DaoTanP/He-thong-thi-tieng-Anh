@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 11, 2022 at 02:04 PM
--- Server version: 8.0.27
--- PHP Version: 7.4.26
+-- Host: 127.0.0.1
+-- Generation Time: May 20, 2022 at 05:30 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hethongthitienganh`
+-- Database: `ta`
 --
 
 -- --------------------------------------------------------
@@ -27,15 +28,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `cauhoi`
 --
 
-DROP TABLE IF EXISTS `cauhoi`;
-CREATE TABLE IF NOT EXISTS `cauhoi` (
-  `CauHoi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `LoaiCauHoi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `A` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `B` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `C` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `D` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `DapAnDung` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+CREATE TABLE `cauhoi` (
+  `CauHoi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `LoaiCauHoi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `A` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `B` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `C` text COLLATE utf8mb4_unicode_ci,
+  `D` text COLLATE utf8mb4_unicode_ci,
+  `DapAnDung` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -104,7 +104,47 @@ INSERT INTO `cauhoi` (`CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`) V
 ('Choose one sentence that has the same meaning as the root one:\r\nThe water was so cold that the children could not swim in it.', 'Chuyển đổi câu', 'The water was not warm enough for the children to swim in it.', 'The water was not warm enough for the children to swim in.', 'The water was not enough warm for the children to swim in.', 'The water was not warm enough for the children swim in.', 'B'),
 ('Choose one sentence that has the closest meaning to the root one:\r\nLan suggested going out for dinner.', 'Chuyển đổi câu', 'Lan said, \"Why don’t we go out for dinner?\"', 'Lan said, \"Do you want to go out for dinner?\"', 'Lan said, \"Must we go out for dinner?\"', 'Lan said, \"Will you go out for dinner?\"', 'A'),
 ('Choose one sentence that has the same meaning as the root one:\r\nMaria eats very little so as not to put on weight.', 'Chuyển đổi câu', 'Maria eats little very because she wants to fose weight.', 'Maria eats very little because she wants weight to lose.', 'Maria eats very little because she wants to lose weight.', 'Maria eats very little because lose weight she wants to.', 'C'),
-('Choose one sentence that has the same meaning as the root one:\r\n“Cigarettes?” he asked. “No, thanks,” I said.', 'Chuyển đổi câu', 'He asked for a cigarette, and I immediately refused.', 'He mentioned a cigarette, so I thanked him.', 'He asked if I was smoking, and I denied at once.', 'He offered me a cigarette, but I promptly declined.', 'D');
+('Choose one sentence that has the same meaning as the root one:\r\n“Cigarettes?” he asked. “No, thanks,” I said.', 'Chuyển đổi câu', 'He asked for a cigarette, and I immediately refused.', 'He mentioned a cigarette, so I thanked him.', 'He asked if I was smoking, and I denied at once.', 'He offered me a cigarette, but I promptly declined.', 'D'),
+('To __________ over something is to feel or express worry, annoyance, or anxiety about it.', 'Từ vựng', 'Fret', 'Freak', 'Fear', NULL, 'A'),
+('Something that is __________ is not only characteristic or distinctive of a type but goes a step further to capture the pure and essential essence of it — or to embody it perfectly.', 'Từ vựng', 'Quintessential', 'Standard', 'Normal', NULL, 'A'),
+('To ____________ something suggests taking forceful measures to prevent something undesirable.', 'Từ vựng', 'Consider', 'Neglect', 'Safeguard', NULL, 'C'),
+('To __________ something is to confirm a theory, story, or fact with evidence, such as in a courtroom, witnesses might be called to do this to a story from suspect.', 'Từ vựng', 'Contradict', 'Corporate', 'Verify', NULL, 'C'),
+('__________ is a compound noun used for any idea. Using this term usually connotes our admiration for something or someone\'s creativity.', 'Từ vựng', 'Idea', 'Brainchild', 'Destruction', NULL, 'B'),
+('gather into a mass, sum, or whole, amount to', 'Từ vựng', 'approach', 'proceed', 'aggregate', NULL, 'C'),
+('real being, something that exists as a particular and discrete unit, fact of existence', 'Từ vựng', 'Thesis', 'entity', 'statistic', NULL, 'B'),
+('stiff and unyielding, strict, hard and unbending, not flexible', 'Từ vựng', 'enormous', 'objective', 'rigid', NULL, 'C'),
+('combine, mix, constitute, pay interest, increase', 'Từ vựng', 'reside', 'compound', 'assemble', NULL, 'B'),
+('assumption, theory', 'Từ vựng', 'hypothesis', 'manual', 'mechanism', NULL, 'A'),
+('New York is ----- large city', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('Are you attending ----- reception today', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('----- Oranges are grown in Nagpur', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'D'),
+('She wants to become ----- engineer', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'B'),
+('----- lion is a ferocious animal', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('----- unit means a measurement', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('He is ----- honest official.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('Taj mahal is built of ----- marble', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'D'),
+('He is ----- European', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('Let us play ----- chess', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'D'),
+('I go to Madurai by ----- Vaigai Express', 'Mạo từ', 'a', 'an', 'the', 'some', 'C'),
+('He hopes to join ----- university soon', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('Let us go to a restaurant and have ----- coffee', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('It is ------ absurd story', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'B'),
+('I want to eat ----- apple', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'B'),
+('----- Pandiyan Express is very popular', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('India will become ----- super power shortly', 'Mạo từ', 'a', 'an', 'the', 'some', 'A'),
+('Ram was ----- best student in the class', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('Please give me ----- useful gift', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('----- apples I bought are sour', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('The thief was sent to ----- prison', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('----- meat you cooked tasted good', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('Our city will have ----- university soon', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('----- elephant is a vegetarian', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('This is ----- car I bought yesterday', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('Italy is ___ European country.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
+('___ elephant is a vegetarian.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('The king is likely to marry ___ heiress.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
+('I must go to see ___ old teacher.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'D'),
+('It has been raining all ___ afternoon.', 'Mạo từ', 'a', 'an', 'Ø', 'the', 'D');
 
 -- --------------------------------------------------------
 
@@ -112,14 +152,32 @@ INSERT INTO `cauhoi` (`CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`) V
 -- Table structure for table `nguoidung`
 --
 
-DROP TABLE IF EXISTS `nguoidung`;
-CREATE TABLE IF NOT EXISTS `nguoidung` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `TenDangNhap` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MatKhau` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  KEY `id` (`id`)
+CREATE TABLE `nguoidung` (
+  `id` int(11) NOT NULL,
+  `TenDangNhap` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MatKhau` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  ADD KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
