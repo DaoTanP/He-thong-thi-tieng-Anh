@@ -22,13 +22,15 @@ $result1 = mysqli_query($conn, $command1);
 
 class Question
 {
+    public $requirement;
     public $question;
     public $answer = array();
     // public $answerA, $answerB, $answerC, $answerD;
     public $rightAnswer;
 
-    function setValue($question, $answer, $rightAnswer)
+    function setValue($requirement, $question, $answer, $rightAnswer)
     {
+        $this->requirement = $requirement;
         $this->question = $question;
         $this->answer = $answer;
         // $this->answerA = $answerA;
@@ -45,7 +47,7 @@ echo '<script>const questionArr = [];';
 
 while ($row = mysqli_fetch_array($result1)) {
     array_push($rightAnswerArr, $row['DapAnDung']);
-    $question->setValue($row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null);
+    $question->setValue($row['YeuCau'], $row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null);
     echo 'questionArr[' . $arrIndex++ . '] = ' . json_encode($question) . ';';
 }
 echo '</script>';

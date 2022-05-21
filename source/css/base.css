@@ -1,20 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 :root {
-    --primary: #2e8b8d;
-    --primary-shadow: #2e8b8d33;
-    --primary-dark: #0c4344;
-    --secondary: #e8ae98;
+    --primary: #1abc9c
+        /*#2e8b8d*/
+    ;
+    --primary-shadow: #1abc9c33;
+    --primary-dark: #16a085;
+
+    --secondary: #f1c40f
+        /*#e8ae98*/
+    ;
+    --secondary-shadow: #f1c40f33;
+    --secondary-dark: #f39c12;
     --text-color: #333;
 
     --red: #e74c3c;
     --dark-red: #c0392b;
+
+    --white: #ecf0f1;
+    --dark-white: #bdc3c7;
+    --gray: #95a5a6;
+    --dark-gray: #7f8c8d;
+
     font-size: 16px;
 }
 
 * {
     box-sizing: border-box;
-    transition: .25s;
+    transition: .1s;
 }
 *::before, *::after {
     box-sizing: inherit;

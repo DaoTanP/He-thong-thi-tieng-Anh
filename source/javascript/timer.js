@@ -1,8 +1,8 @@
 // Credit: Mateusz Rybczonec
 
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
+const WARNING_THRESHOLD = 0.5; //50%
+const ALERT_THRESHOLD = 0.25; //25%
 
 const COLOR_CODES = {
     info: {
@@ -78,7 +78,7 @@ function startTimer() {
         setRemainingPathColor(timeLeft);
 
         if (timeLeft <= 0) {
-            onTimesUp(timeUpEvent);
+            onTimesUp(timesUpEvent);
         }
     }, 1000);
 }
@@ -100,14 +100,14 @@ function formatTime(time) {
 
 function setRemainingPathColor(timeLeft) {
     const { alert, warning, info } = COLOR_CODES;
-    if (timeLeft <= alert.threshold) {
+    if (timeLeft <= timeLimit * alert.threshold) {
         document
             .getElementById("base-timer-path-remaining")
             .classList.remove(warning.color);
         document
             .getElementById("base-timer-path-remaining")
             .classList.add(alert.color);
-    } else if (timeLeft <= warning.threshold) {
+    } else if (timeLeft <= timeLimit * warning.threshold) {
         document
             .getElementById("base-timer-path-remaining")
             .classList.remove(info.color);

@@ -9,3 +9,7 @@ create or replace procedure update_maCauHoi() begin
 end;
 
 call _tmp_procedure();
+
+//kiem tra trung lap
+SELECT * FROM `cauhoi` GROUP BY `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`;
+SELECT *, COUNT(*) FROM `cauhoi` GROUP BY `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung` ORDER BY COUNT(*) DESC;

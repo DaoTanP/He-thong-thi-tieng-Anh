@@ -138,7 +138,6 @@ INSERT INTO `cauhoi` (`CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`) V
 ('The thief was sent to ----- prison', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
 ('----- meat you cooked tasted good', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
 ('Our city will have ----- university soon', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
-('----- elephant is a vegetarian', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
 ('This is ----- car I bought yesterday', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),
 ('Italy is ___ European country.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'A'),
 ('___ elephant is a vegetarian.', 'Mạo từ', 'a', 'an', 'the', 'Ø', 'C'),

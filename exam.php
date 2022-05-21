@@ -6,48 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài thi</title>
-    <link rel="stylesheet" href="./source/css/exam.css">
     <link rel="stylesheet" href="./source/css/timer.css">
     <link rel="stylesheet" href="./source/css/base.css">
     <link rel="stylesheet" href="./source/css/main.css">
+    <link rel="stylesheet" href="./source/css/exam.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <script src="./source/javascript/helper.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <a href="index.php" class="btn hidden">Thoát</a>
+    <div class="container-lg">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="question-container" id="exam">
             <div id="timer"></div>
             <div class="container" id="exam-info">
                 <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>
                 <p>Khi bạn đã sẵn sàng, nhấn bắt đầu</p>
 
-                <button onclick="startTakingExam(); startTimer()" class="btn btn-filled" type="button">Bắt
-                    đầu</button>
+                <button onclick="startTakingExam(); startTimer()" class="btn btn-filled btn-lg" type="button">
+                    Bắt đầu</button>
             </div>
             <div id="question-holder-container">
 
             </div>
             <hr>
             <div class="nav-btn-container">
-                <button type="button" onclick="showQuestion(currentQuestion-1)" class="btn btn-prev"><i class="fa-solid fa-circle-arrow-left"></i></button>
-                <button type="button" onclick="showQuestion(currentQuestion+1)" class="btn btn-next"><i class="fa-solid fa-circle-arrow-right"></i></button>
+                <button type="button" onclick="showQuestion(currentQuestion-1)" class="btn btn-lg btn-prev"><i class="fa-solid fa-arrow-left"></i> Trước</button>
+                <button type="button" onclick="showQuestion(currentQuestion+1)" class="btn btn-lg btn-next">Sau <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </form>
-    </div>
-    <div class="exam-nav-container">
-        <button type="submit" form="exam" class="btn btn-filled">Nộp bài</button>
-        <div class="question-table">
-            <a href="" class="btn btn-filled">1</a>
-            <a href="" class="btn btn-filled">2</a>
-            <a href="" class="btn btn-filled">3</a>
-            <a href="" class="btn btn-filled">4</a>
-            <a href="" class="btn btn-filled">5</a>
-            <a href="" class="btn btn-filled">6</a>
-            <a href="" class="btn btn-filled">7</a>
+        <div class="exam-nav-container hidden">
+            <div class="header-container">
+                <header>Danh sách câu hỏi</header>
+                <p id="progress"></p>
+                <button type="submit" form="exam" class="btn btn-filled">Nộp bài</button>
+            </div>
+            <div class="question-table" id="question-table">
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>
@@ -58,10 +57,11 @@ require 'examSelect.php';
 
 <script src="./source/javascript/timer.js"></script>
 <script>
-    initTimer(questionArr.length * 60);
-    resetTimer(15);
+    initTimer(questionArr.length * 10);
+    // resetTimer(questionArr.length);
     let currentQuestion = -1;
-    timeUpEvent = () => {
+    timesUpEvent = () => {
+        resetTimer(1);
         document.getElementById("exam").submit();
     }
 
@@ -72,13 +72,19 @@ require 'examSelect.php';
         let info = document.getElementById('exam-info');
         info.style.display = 'block';
         info.innerHTML = `
-            <p>Bài làm đúng ${soCauDung} câu, số điểm đạt được: </p>
-            <h3>${score}</h3>
+            <p class="txt-center">Bài làm đúng ${soCauDung} câu trên tổng số ${questionArr.length} câu, số điểm đạt được: </p>
+            <h1 class="txt-center txt-primary">${score}</h1>
         `;
     }
 
+    let btnPrev = document.querySelector(".btn-prev");
+    let btnNext = document.querySelector(".btn-next");
+    btnPrev.classList.add("hidden");
+    btnNext.classList.add("hidden");
+
     function startTakingExam() {
         document.getElementById('exam-info').style.display = 'none';
+        document.querySelector('.exam-nav-container').classList.remove('hidden');
         initQuestion();
         showQuestion();
     }
@@ -89,18 +95,50 @@ require 'examSelect.php';
             questionContainer.children[currentQuestion].classList.add('hidden');
         questionContainer.children[questionNumber].classList.remove('hidden');
         currentQuestion = questionNumber;
-        localStorage.setItem('currentQuestion', currentQuestion.toString());
+
+        if (currentQuestion <= 0) {
+            btnPrev.classList.add("hidden");
+        } else {
+            btnPrev.classList.remove("hidden");
+        }
+
+        if (currentQuestion >= questionArr.length - 1) {
+            btnNext.classList.add("hidden");
+        } else {
+            btnNext.classList.remove("hidden");
+        }
+
+        let answered = 0;
+        let questionTable = document.getElementById("question-table");
+        let nodes = document.querySelectorAll('.answer-container');
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = 0; j < nodes[i].childElementCount; j++) {
+                if (nodes[i].children[j].checked) {
+                    answered++;
+                    questionTable.children[i].className = 'btn btn-filled';
+                    break;
+                } else {
+                    questionTable.children[i].className = 'btn btn-inactive';
+                }
+            }
+        }
+        questionTable.children[currentQuestion].className = 'btn btn-active';
+
+        let progress = document.getElementById('progress');
+        progress.textContent = "Đã làm " + answered + "/" + questionArr.length + " câu";
+
     }
 
     function initQuestion() {
         let questionContainer = document.getElementById("question-holder-container");
-        var questionInstance;
+        let questionTable = document.getElementById("question-table");
+        var questionInstance, questionBtnInstance;
         for (let i = 0; i < questionArr.length; i++) {
             questionInstance = document.createElement("div");
-            questionInstance.classList.add('question-holder');
-            questionInstance.classList.add('hidden');
+            questionInstance.className = 'question-holder hidden';
             questionInstance.innerHTML = `
             <div class="question-number">${i+1}</div>
+                <p class="requirement txt-center">${questionArr[i].requirement}</p>
                 <p class="question">${questionArr[i].question}</p>
                 <div class="answer-container">
                     <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-A" value="A">
@@ -114,6 +152,25 @@ require 'examSelect.php';
                 </div>
             `;
             questionContainer.appendChild(questionInstance);
+
+            questionBtnInstance = document.createElement("button");
+            questionBtnInstance.type = "button";
+            questionBtnInstance.onclick = function() {
+                showQuestion(i)
+            };
+            questionBtnInstance.className = "btn btn-inactive";
+            questionBtnInstance.textContent = i + 1;
+            questionTable.appendChild(questionBtnInstance);
         }
     }
+
+    // document.getElementById("question-table").onclick = function(e) {
+    //     let nodes = document.querySelectorAll('#question-table > .btn');
+    //     let clicked = [].indexOf.call(nodes, e.target);
+    //     this.children[currentQuestion].classList.remove('btn-active');
+    //     this.children[currentQuestion].classList.add('btn-inactive');
+
+    //     this.children[clicked].classList.remove('btn-inactive');
+    //     this.children[clicked].classList.add('btn-active');
+    // };
 </script>
