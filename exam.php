@@ -40,7 +40,7 @@
             <div class="header-container">
                 <header>Danh sách câu hỏi</header>
                 <p id="progress"></p>
-                <button type="submit" form="exam" class="btn btn-filled">Nộp bài</button>
+                <button type="submit" form="exam" class="btn btn-filled" name="submit">Nộp bài</button>
             </div>
             <div class="question-table" id="question-table">
             </div>
@@ -52,7 +52,56 @@
 </html>
 
 <?php
-require 'examSelect.php';
+// ket noi du lieu
+$conn = mysqli_connect("localhost", "root", "", "hethongthitienganh") or die("khong ket noi");
+mysqli_query($conn, "set names 'utf8'");
+
+// khoi tao: so cau hoi cho 1 bai thi, so cau hoi trong db, so trang hien thi
+$questionPerExam = 40;
+//lay cau hoi ngau nhien
+$command1 = "SELECT * FROM `cauhoi` LIMIT $questionPerExam";
+$result1 = mysqli_query($conn, $command1);
+
+class Question
+{
+    public $requirement;
+    public $question;
+    public $answer = array();
+    public $rightAnswer;
+
+    function setValue($requirement, $question, $answer, $rightAnswer)
+    {
+        $this->requirement = $requirement;
+        $this->question = $question;
+        $this->answer = $answer;
+        $this->rightAnswer = $rightAnswer;
+    }
+}
+$rightAnswerArr = array();
+$question = new Question();
+$arrIndex = 0;
+echo '<script>const questionArr = [];';
+
+while ($row = mysqli_fetch_array($result1)) {
+    array_push($rightAnswerArr, $row['DapAnDung']);
+    $question->setValue($row['YeuCau'], $row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null);
+    echo 'questionArr[' . $arrIndex++ . '] = ' . json_encode($question) . ';';
+}
+echo '</script>';
+
+if (isset($_POST["submit"])) {
+    $score = 0;
+    $soCauDung = 0;
+    for ($i = 0; $i < $arrIndex; $i++) {
+        if (isset($_POST["question-" . ($i + 1) . "-answer"]) && $rightAnswerArr[$i] == $_POST["question-" . ($i + 1) . "-answer"]) {
+            $score += 10 / $arrIndex;
+            $soCauDung++;
+        }
+    }
+    echo '<script>const score = ' . $score . ';
+                  const soCauDung = ' . $soCauDung . ';
+          </script>';
+}
 ?>
 
 <script src="./source/javascript/timer.js"></script>
@@ -73,7 +122,8 @@ require 'examSelect.php';
         info.style.display = 'block';
         info.innerHTML = `
             <p class="txt-center">Bài làm đúng ${soCauDung} câu trên tổng số ${questionArr.length} câu, số điểm đạt được: </p>
-            <h1 class="txt-center txt-primary">${score}</h1>
+            <h1 class="txt-center txt-secondary" style="margin: 4rem; font-size: 4rem">${score}</h1>
+            <a href="index.php" class="btn btn-center">Về trang chủ</a>
         `;
     }
 
