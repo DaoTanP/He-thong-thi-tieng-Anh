@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 21, 2022 at 11:12 AM
--- Server version: 8.0.27
--- PHP Version: 7.4.26
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 23, 2022 lúc 09:10 AM
+-- Phiên bản máy phục vụ: 10.1.37-MariaDB
+-- Phiên bản PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,17 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hethongthitienganh`
+-- Cơ sở dữ liệu: `a`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cauhoi`
+-- Cấu trúc bảng cho bảng `cauhoi`
 --
 
-DROP TABLE IF EXISTS `cauhoi`;
-CREATE TABLE IF NOT EXISTS `cauhoi` (
+CREATE TABLE `cauhoi` (
   `MaCauHoi` varchar(8) DEFAULT NULL,
   `YeuCau` varchar(64) DEFAULT NULL,
   `CauHoi` varchar(181) DEFAULT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE IF NOT EXISTS `cauhoi` (
   `C` varchar(79) DEFAULT NULL,
   `D` varchar(51) DEFAULT NULL,
   `DapAnDung` varchar(9) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cauhoi`
+-- Đang đổ dữ liệu cho bảng `cauhoi`
 --
 
 INSERT INTO `cauhoi` (`MaCauHoi`, `YeuCau`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`) VALUES
@@ -147,16 +147,30 @@ INSERT INTO `cauhoi` (`MaCauHoi`, `YeuCau`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C
 ('XDL-19', 'Find a mistake', 'A species that faces overexploitation is one that may become severely endangered or even extinct due to the rate in that the species is being used.', 'Xác định lỗi', 'faces', 'overexploitation', 'due to', 'that', 'D'),
 ('XDL-20', 'Find a mistake', 'Much as though I approve of his enthusiasm, I’m worried he’ll overdo his weight training.', 'Xác định lỗi', 'approve of', 'worried', 'Much as', 'overdo', 'C'),
 ('', '', '', '', '', '', '', '', ''),
-('', '', '', '', '', '', '', '', '');
+('', '', '', '', '', '', '', '', ''),
+(NULL, NULL, 'Merit', NULL, 're', 'di', 'de', 'dis', 'C'),
+(NULL, NULL, 'Post', NULL, 'be', 'out', 'age', 'on', 'B'),
+(NULL, NULL, 'Date', NULL, 'un', 'ante', 'in', 'anti', 'B'),
+(NULL, NULL, 'Spoken', NULL, 'in', 'de', 'out', 'dis', 'C'),
+(NULL, NULL, 'Advantage', NULL, 'de', 're', 'ub', 'dis', 'D'),
+(NULL, NULL, 'Minister', NULL, 'bi', 'over', 'on', 'ex', 'D'),
+(NULL, NULL, 'Relevant', NULL, 'de', 'ir', 'un', 'miss', 'B'),
+(NULL, NULL, 'Large', NULL, 'en', 'in', 'on', 'out', 'A'),
+(NULL, NULL, 'Circle', NULL, 'an', 'sem', 'semi', 'en', 'C'),
+(NULL, '', 'Looker', NULL, 'on', 'out', 'de', 'in', 'A'),
+(NULL, NULL, 'Editor', NULL, 'bye', 'sub', 'joint', 'bi', 'B'),
+(NULL, '', 'Danger', NULL, 'er', 'ous', 'ed', 'en', 'B'),
+(NULL, NULL, 'Impressive', NULL, 'de', 'in', 'un', 'out', 'C'),
+(NULL, NULL, 'Vegetarian', NULL, 'an', 'un', 'en', 'non', 'D'),
+(NULL, NULL, 'Monthly', NULL, 'bi', 'bye', 'anti', 'over', 'A');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cdt`
+-- Cấu trúc bảng cho bảng `cdt`
 --
 
-DROP TABLE IF EXISTS `cdt`;
-CREATE TABLE IF NOT EXISTS `cdt` (
+CREATE TABLE `cdt` (
   `MaCauHoi` varchar(8) DEFAULT NULL,
   `CauHoi` varchar(73) DEFAULT NULL,
   `LoaiCauHoi` varchar(12) DEFAULT NULL,
@@ -165,10 +179,10 @@ CREATE TABLE IF NOT EXISTS `cdt` (
   `C` varchar(16) DEFAULT NULL,
   `D` varchar(19) DEFAULT NULL,
   `DapAnDung` varchar(9) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cdt`
+-- Đang đổ dữ liệu cho bảng `cdt`
 --
 
 INSERT INTO `cdt` (`MaCauHoi`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`) VALUES
@@ -256,17 +270,35 @@ INSERT INTO `cdt` (`MaCauHoi`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nguoidung`
+-- Cấu trúc bảng cho bảng `nguoidung`
 --
 
-DROP TABLE IF EXISTS `nguoidung`;
-CREATE TABLE IF NOT EXISTS `nguoidung` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `TenDangNhap` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MatKhau` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  KEY `id` (`id`)
+CREATE TABLE `nguoidung` (
+  `id` int(11) NOT NULL,
+  `TenDangNhap` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MatKhau` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  ADD KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
