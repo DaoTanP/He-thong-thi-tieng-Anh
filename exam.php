@@ -13,7 +13,6 @@ if (!isset($_SESSION["username"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài thi</title>
     <link rel="stylesheet" href="./source/css/timer.css">
-    <link rel="stylesheet" href="./source/css/base.css">
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="./source/css/exam.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -112,7 +111,7 @@ if (isset($_POST["submit"])) {
 
 <script src="./source/javascript/timer.js"></script>
 <script>
-    initTimer(questionArr.length * 10);
+    initTimer(questionArr.length * 10, 'progress');
     // resetTimer(questionArr.length);
     let currentQuestion = -1;
     timesUpEvent = () => {

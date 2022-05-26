@@ -24,7 +24,7 @@ let timerInterval;
 let timeUpEvent; //a function to be called when time up
 let remainingPathColor = COLOR_CODES.info.color;
 
-function initTimer(time) {
+function initTimer(time, timerStyle = 'circle') {
     clearInterval(timerInterval);
     timerInterval = null;
     while (timerInterval !== null) {
@@ -33,7 +33,8 @@ function initTimer(time) {
     timeLimit = time;
     timeLeft = timeLimit;
 
-    document.getElementById("timer").innerHTML = `
+    if (timerStyle === 'circle') {
+        document.getElementById("timer").innerHTML = `
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <g class="base-timer__circle">
@@ -52,14 +53,24 @@ function initTimer(time) {
     </g>
   </svg>
   <span id="base-timer-label" class="base-timer__label">${formatTime(
-        timeLeft
-    )}</span>
+            timeLeft
+        )}</span>
 </div>
 `;
+    }
+    else if (timerStyle === 'progress') {
+        document.getElementById("timer").innerHTML = `
+  <span id="base-timer-label" class="timer-label">${formatTime(timeLeft)}</span>
+  <div class="meter" style="width: 50%; height: 5px">
+	<span class="green" id="base-timer-path-remaining" style="width: ${(timeLeft / time) * 100}%"></span>
+</div>
+`;
+    }
 }
 
 function destroyTimer() {
     document.getElementById("timer").innerHTML = ``;
+    localStorage.time = null;
 }
 
 const onTimesUp = (func) => {
@@ -68,7 +79,7 @@ const onTimesUp = (func) => {
 }
 
 function startTimer() {
-    if (localStorage.time == 'NaN' || parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
+    if (isNaN(parseInt(localStorage.time, 10)) || parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
         localStorage.time = (Date.now() / 1000) + timeLimit;
 
     timerInterval = setInterval(() => {
