@@ -52,14 +52,17 @@
 }
 
 .green {
+    background-color: var(--green);
     color: rgb(65, 184, 131);
 }
 
 .orange {
+    background-color: var(--yellow);
     color: orange;
 }
 
 .red {
+    background-color: var(--red);
     color: red;
 }
 

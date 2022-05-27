@@ -1,8 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION["username"])) {
-    header("Location: login.php");
-}
+require("checkLogin.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,12 +108,12 @@ if (isset($_POST["submit"])) {
 
 <script src="./source/javascript/timer.js"></script>
 <script>
-    initTimer(questionArr.length * 10, 'progress');
+    initTimer(questionArr.length * 0.5, 'progress');
     // resetTimer(questionArr.length);
     let currentQuestion = -1;
     timesUpEvent = () => {
         resetTimer(1);
-        document.getElementById("exam").submit();
+        document.getElementById("exam").submit.click();
     }
 
     preventGoBack_ToThisPage();

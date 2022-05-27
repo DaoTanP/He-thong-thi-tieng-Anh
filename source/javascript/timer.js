@@ -62,7 +62,7 @@ function initTimer(time, timerStyle = 'circle') {
         document.getElementById("timer").innerHTML = `
   <span id="base-timer-label" class="timer-label">${formatTime(timeLeft)}</span>
   <div class="meter" style="width: 50%; height: 5px">
-	<span class="green" id="base-timer-path-remaining" style="width: ${(timeLeft / time) * 100}%"></span>
+	<span class="green" id="base-timer-path-remaining"></span>
 </div>
 `;
     }
@@ -140,4 +140,7 @@ function setCircleDasharray(timeLeft) {
     document
         .getElementById("base-timer-path-remaining")
         .setAttribute("stroke-dasharray", circleDasharray);
+    document
+        .getElementById("base-timer-path-remaining")
+        .style.width = (timeLeft / timeLimit * 100).toString() + "%";
 }

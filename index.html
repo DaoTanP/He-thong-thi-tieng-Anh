@@ -5,29 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
+    <title>LTW4-WEB Thi Trắc Nghiệm Online Hàng Đầu Việt Nam :v</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./source/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
-    <script src="./source/javascript/navBarActiveControl.js"></script>
+    <link rel="icon" type="images" href="./assets/new-lgoteam.png">
 </head>
 
 <body>
     <div class="hero-section">
-        <?php
-        require './header.php';
-        ?>
-        <script>
-            var pageName = 'Trang chủ';
-            setNavActive(pageName);
-        </script>
+        <div class="grid-container header" id="header">
+            <a href="#" class="grid-child-left">
+                <img class="logo-header" src="?" alt="logo-team4">
+            </a>
+            <nav class="full-height grid-child-stretch">
+                <ul class="navbar-list grid-container full-height">
+                    <li>
+                        <a href="./index.php"><i class="icon fa-solid fa-house"></i>Trang chủ</a>
+                    </li>
+                    <li>
+                        <a href="./examSelecting.php"><i class="icon fa-solid fa-file"></i>Bài thi</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="icon fa-solid fa-book"></i>Tài liệu</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="icon fa-solid fa-circle-question"></i>Trợ giúp</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="icon fa-solid fa-person-circle-question"></i>Hỏi đáp</a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="login-signup-btn" class="flex-container full-height grid-child-right">
+                <a href="signup.php" class="btn">Đăng kí</a>
+                <a href="login.php" class="btn btn-filled">Đăng nhập</a>
+            </div>
+
+        </div>
         <div class="banner">
-            <div class="svg"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 470 470" style="enable-background:new 0 0 470 470;" xml:space="preserve">
+            <div class="svg"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 470 470"
+                    style="enable-background:new 0 0 470 470;" xml:space="preserve">
                     <g>
-                        <path style="fill:#98D9D5;" d="M82.132,273.404v-19.607c-10.67-3.226-18.463-13.146-18.463-24.854v-75.497
+                        <path style="fill:#98D9D5;"
+                            d="M82.132,273.404v-19.607c-10.67-3.226-18.463-13.146-18.463-24.854v-75.497
             		c-11.8,24.726-18.417,52.381-18.417,81.555c0,24.649,4.721,48.216,13.302,69.847C61.848,291.461,70.515,280.175,82.132,273.404z" />
-                        <path style="fill:#98D9D5;" d="M387.902,301.885v46.112c10.405-14.019,18.921-29.517,25.183-46.112H387.902z" />
-                        <path style="fill:#98D9D5;" d="M300.089,413.602c-12.93-10.907-20.545-26.814-20.545-44.149v-46.765h-19.084
+                        <path style="fill:#98D9D5;"
+                            d="M387.902,301.885v46.112c10.405-14.019,18.921-29.517,25.183-46.112H387.902z" />
+                        <path style="fill:#98D9D5;"
+                            d="M300.089,413.602c-12.93-10.907-20.545-26.814-20.545-44.149v-46.765h-19.084
             		c-17.354,0-31.474-14.119-31.474-31.474s14.119-31.474,31.474-31.474h127.015V245.8c-13.469-2.229-25.355-10.376-32.28-22.246
             		c-12.2,0-45.489,0-58.485,0c-5.602,12.59-18.169,20.968-32.333,20.968c-19.515,0-35.391-15.876-35.391-35.391v-21.399
             		c0-4.142,3.358-7.5,7.5-7.5h48.283v-13.941c0-13.311,10.28-25.478,23.403-27.701c0.414-0.07,0.833-0.105,1.252-0.105h23.926
@@ -38,7 +65,8 @@
             		c3.304-0.686,6.725-1.049,10.229-1.049c27.045,0,49.17,21.472,50.227,48.263h11.909c20.129,0,36.506,16.376,36.506,36.505
             		c0,15.072-9.384,28.486-23.027,33.928v32.402c16.615,4.761,34.153,7.316,52.277,7.316C258.011,425,279.847,420.973,300.089,413.602
             		z M260.359,149.219c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5v7.813c0,4.142-3.358,7.5-7.5,7.5s-7.5-3.358-7.5-7.5V149.219z" />
-                        <path style="fill:#6DA8D6;" d="M372.902,365.835v-71.45c0-4.142,3.358-7.5,7.5-7.5h37.649c4.689-16.498,7.201-33.904,7.201-51.885
+                        <path style="fill:#6DA8D6;"
+                            d="M372.902,365.835v-71.45c0-4.142,3.358-7.5,7.5-7.5h37.649c4.689-16.498,7.201-33.904,7.201-51.885
             		c0-53.089-21.896-101.153-57.121-135.662l0.218,18.473c0.023,2.004-0.756,3.935-2.165,5.36s-3.33,2.228-5.334,2.228h-12.5v20.586
             		c0,4.142-3.358,7.5-7.5,7.5h-30.709c-5.585,1.251-10.373,7.094-10.373,12.806v21.441c0,4.142-3.358,7.5-7.5,7.5h-48.283v13.899
             		c0,11.244,9.147,20.391,20.391,20.391c9.329,0,17.454-6.301,19.759-15.324l0.056,0.014c0.596-2.221,2.417-5.658,7.978-5.658
@@ -114,17 +142,176 @@
             		l86.15-28.716C144.352,456.609,188.98,470,235.252,470c60.069,0,117.234-22.656,160.965-63.793
             		c43.534-40.953,69.642-96.254,73.514-155.719C470.001,246.354,466.868,242.786,462.735,242.516z" />
                     </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
+                    <g>
+                    </g>
                 </svg></div>
             <div class="hero-text">
                 <h1>Website thi tiếng Anh miễn phí, hiệu quả!</h1>
                 <p>Nơi thử sức kiến thức Tiếng Anh của bạn</p>
-                <a href="examSelecting.php" class="btn btn-filled txt-upper">Bắt đầu</a>
+                <a class="btn btn-filled txt-upper">Bắt đầu</a>
             </div>
         </div>
     </div>
-    <?php
-    require './source/html/footer.html';
-    ?>
+    <div id="wp-products">
+        <h2>ĐA DẠNG BÀI THI</h2>
+        <ul id="list-products">
+            <div class="item">
+                <img src="" alt="">
+                <div class="name">Loại đề</div>
+                <div class="desc">Từ vựng</div>
+            </div>
+
+            <div class="item">
+                <img src="" alt="">
+                <div class="name">Loại đề</div>
+                <div class="desc">Trọng âm</div>
+            </div>
+
+            <div class="item">
+                <img src="" alt="">
+                <div class="name">Loại đề</div>
+                <div class="desc">Chuyên ngành</div>
+            </div>
+        </ul>
+        <div class="list-page">
+            <div class="item">
+                <a href="">1</a>
+            </div>
+            <div class="item">
+                <a href="">2</a>
+            </div>
+            <div class="item">
+                <a href="">3</a>
+            </div>
+            <div class="item">
+                <a href="">4</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="saleoff">
+        <div class="box-left">
+            <h1>
+                <span>LTW4</span>
+                <p>Website thi Tiếng Anh tiện lợi, nhanh chóng và phù hợp với mọi trình độ ! </p>
+            </h1>
+        </div>
+
+    </div>
+
+    <div id="comment">
+        <h2>Những Thành Tích Nổi Bật</h2>
+        <div id="comment-body">
+            <div class="prev">
+                <a href="#">
+                    <img src="assets/prev.png" alt="">
+                </a>
+            </div>
+            <ul id="list-comment">
+                <li class="item">
+                    <div class="avatar">
+                        <img src="" alt="">
+
+                    </div>
+
+                    <div class="name">TEAM LTW4</div>
+
+                    <div class="text">
+                        <p></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="avatar">
+                        <img src="" alt="">
+                    </div>
+
+                    <div class="name"></div>
+
+                    <div class="text">
+                        <p></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="avatar">
+                        <img src="assets/avatar_1.png" alt="">
+
+                    </div>
+                    <div class="name"></div>
+
+                    <div class="text">
+                        <p></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="next">
+                <a href="#">
+                    <img src="assets/next.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="box">
+            <div class="logo">
+                <!-- <span>LTW4</span> -->
+                <img src="" alt="">
+            </div>
+            <p>Nguồn trí thức bất tận</p>
+        </div>
+        <div class="box">
+            <h3>NỘI DUNG</h3>
+            <ul class="quick-menu">
+                <div class="item">
+                    <a href="">Trang chủ</a>
+                </div>
+                <div class="item">
+                    <a href="">Bài thi</a>
+                </div>
+                <div class="item">
+                    <a href="">Tài liệu</a>
+                </div>
+                <div class="item">
+                    <a href="">Liên hệ</a>
+                </div>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Góp ý cho chúng tôi</h3>
+            <form action="">
+                <input type="text" placeholder="Nhắn vào đây">
+                <button>Gửi</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

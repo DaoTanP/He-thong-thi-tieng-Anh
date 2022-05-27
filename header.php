@@ -1,11 +1,13 @@
 <?php
-session_start();
+if (session_id() == '') {
+    session_start();
+}
 ?>
 <div class="grid-container header" id="header">
-    <a href="#" class="grid-child-left">
-        <img class="logo-header" src="?" alt="logo-team4">
+    <a href="index.php" class="grid-child-left">
+        <img class="logo-header" src="?" alt="logo">
     </a>
-    <nav class="navbar full-height grid-child-stretch">
+    <nav class="full-height">
         <ul class="navbar-list grid-container full-height">
             <li>
                 <a href="./index.php"><i class="icon fa-solid fa-house"></i>Trang chủ</a>
@@ -14,7 +16,7 @@ session_start();
                 <a href="./examSelecting.php"><i class="icon fa-solid fa-file"></i>Bài thi</a>
             </li>
             <li>
-                <a href=""><i class="icon fa-solid fa-book"></i>Tài liệu</a>
+                <a href="./document.php"><i class="icon fa-solid fa-book"></i>Tài liệu</a>
             </li>
             <li>
                 <a href=""><i class="icon fa-solid fa-circle-question"></i>Trợ giúp</a>
