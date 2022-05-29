@@ -31,7 +31,7 @@ if (session_id() == '') {
         <a href="login.php" class="btn btn-filled">Đăng nhập</a>
     </div>
     <div id="user-account" class="flex-container full-height grid-child-right hidden">
-        <div class="avatar" data-label="A"><a href="logout.php">Tên người dùng</a></div>
+        <div class="avatar dropdown" data-label="A" onclick="this.classList.toggle('opened')"></div>
     </div>
 </div>
 <script>
@@ -63,6 +63,12 @@ if (session_id() == '') {
                 firstCharOfNames += word.charAt(0);
             });
             avatar.dataset.label = firstCharOfNames.substring(0, 2).toUpperCase();
+            avatar.innerHTML = `
+                <div class="dropdown-content" style='user-select: none;'>
+                    <h4 class="txt-center">${username}</h4>
+                    <a href="logout.php">Đăng xuất</a>
+                </div>
+            `;
         } else {
             btnGroup.classList.remove('hidden');
             userAccount.classList.add('hidden');

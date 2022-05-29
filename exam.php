@@ -108,7 +108,8 @@ if (isset($_POST["submit"])) {
 
 <script src="./source/javascript/timer.js"></script>
 <script>
-    initTimer(questionArr.length * 15, 'progress');
+    var thoiGianLamBai = questionArr.length * 15;
+    initTimer(thoiGianLamBai, 'progress');
     // resetTimer(questionArr.length);
     let currentQuestion = -1;
     timesUpEvent = () => {
@@ -130,7 +131,7 @@ if (isset($_POST["submit"])) {
     } else {
         let info = document.getElementById('exam-info');
         info.innerHTML = `
-            <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>
+            <p>Bài làm gồm ${questionArr.length} câu. Thời gian làm bài ${formatTime(thoiGianLamBai)}.</p>
             <p>Khi bạn đã sẵn sàng, nhấn bắt đầu</p>
 
             <button onclick="startTakingExam(); startTimer()" class="btn btn-filled btn-lg" type="button">

@@ -262,9 +262,28 @@ hr {
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
-.avatar * {
+/* .avatar * {
     color: transparent;
     background-color: transparent;
+} */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown>.dropdown-content {
+    position: absolute;
+    display: none;
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: 0 .5rem .75rem var(--black), 0 0 .5rem var(--gray);
+}
+.dropdown.opened>.dropdown-content {
+    width: max-content;
+    padding: 1rem;
+    display: block;
+    top: 100%;
+    right: 0;
 }
 
 .full-height {
