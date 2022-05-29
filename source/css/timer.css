@@ -77,6 +77,16 @@
     border-radius: 25px;
     padding: 2.5px;
 }
+.meter::before {
+    content: '';
+    position: absolute;
+    left: 2.5px;
+    top: 2.5px;
+    width: calc(100% - 5px);
+    height: calc(100% - 5px);
+    background: var(--white);
+    border-radius: 25px;
+}
 .meter>span {
     display: block;
     height: 100%;

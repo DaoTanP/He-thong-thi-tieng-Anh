@@ -1,5 +1,5 @@
 <?php
-require("checkLogin.php");
+require "checkLogin.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,11 +23,7 @@ require("checkLogin.php");
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="question-container" id="exam">
             <div id="timer"></div>
             <div class="container" id="exam-info">
-                <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>
-                <p>Khi bạn đã sẵn sàng, nhấn bắt đầu</p>
 
-                <button onclick="startTakingExam(); startTimer()" class="btn btn-filled btn-lg" type="button">
-                    Bắt đầu</button>
             </div>
             <div id="question-holder-container">
 
@@ -61,22 +57,26 @@ mysqli_query($conn, "set names 'utf8'");
 // khoi tao: so cau hoi cho 1 bai thi, so cau hoi trong db, so trang hien thi
 $questionPerExam = 40;
 //lay cau hoi ngau nhien
-$command1 = "SELECT * FROM `cauhoi` LIMIT $questionPerExam";
+$command1 = "SELECT * FROM `cauhoi` WHERE `LoaiCauHoi`='Xác định lỗi' LIMIT $questionPerExam";
 $result1 = mysqli_query($conn, $command1);
 
 class Question
 {
+    public $type;
     public $requirement;
     public $question;
     public $answer = array();
     public $rightAnswer;
+    public $targetPart;
 
-    function setValue($requirement, $question, $answer, $rightAnswer)
+    function setValue($type, $requirement, $question, $answer, $rightAnswer, $targetPart)
     {
+        $this->type = $type;
         $this->requirement = $requirement;
         $this->question = $question;
         $this->answer = $answer;
         $this->rightAnswer = $rightAnswer;
+        $this->targetPart = $targetPart;
     }
 }
 $rightAnswerArr = array();
@@ -86,7 +86,7 @@ echo '<script>const questionArr = [];';
 
 while ($row = mysqli_fetch_array($result1)) {
     array_push($rightAnswerArr, $row['DapAnDung']);
-    $question->setValue($row['YeuCau'], $row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null);
+    $question->setValue($row['LoaiCauHoi'], $row['YeuCau'], $row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null, $row['ChuThich']);
     echo 'questionArr[' . $arrIndex++ . '] = ' . json_encode($question) . ';';
 }
 echo '</script>';
@@ -108,7 +108,7 @@ if (isset($_POST["submit"])) {
 
 <script src="./source/javascript/timer.js"></script>
 <script>
-    initTimer(questionArr.length * 0.5, 'progress');
+    initTimer(questionArr.length * 15, 'progress');
     // resetTimer(questionArr.length);
     let currentQuestion = -1;
     timesUpEvent = () => {
@@ -124,8 +124,17 @@ if (isset($_POST["submit"])) {
         info.style.display = 'block';
         info.innerHTML = `
             <p class="txt-center">Bài làm đúng ${soCauDung} câu trên tổng số ${questionArr.length} câu, số điểm đạt được: </p>
-            <h1 class="txt-center txt-secondary" style="margin: 4rem; font-size: 4rem">${score}</h1>
+            <h1 class="txt-center txt-secondary" style="margin: 4rem; font-size: 4rem">${(score.toString().length > 3) ? score.toFixed(2) : score}</h1>
             <a href="index.php" class="btn btn-center">Về trang chủ</a>
+        `;
+    } else {
+        let info = document.getElementById('exam-info');
+        info.innerHTML = `
+            <p>Bài làm gồm 40 câu. Thời gian làm bài 40 phút.</p>
+            <p>Khi bạn đã sẵn sàng, nhấn bắt đầu</p>
+
+            <button onclick="startTakingExam(); startTimer()" class="btn btn-filled btn-lg" type="button">
+                Bắt đầu</button>
         `;
     }
 
@@ -191,7 +200,7 @@ if (isset($_POST["submit"])) {
             questionInstance.innerHTML = `
             <div class="question-number">${i+1}</div>
                 <p class="requirement txt-center">${questionArr[i].requirement}</p>
-                <p class="question">${questionArr[i].question}</p>
+                <p class="question">${formatQuestion(questionArr[i])}</p>
                 <div class="answer-container">
                     <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-A" value="A">
                     <label for="question-${i+1}-A">${questionArr[i].answer[0]}</label>
@@ -216,13 +225,30 @@ if (isset($_POST["submit"])) {
         }
     }
 
-    // document.getElementById("question-table").onclick = function(e) {
-    //     let nodes = document.querySelectorAll('#question-table > .btn');
-    //     let clicked = [].indexOf.call(nodes, e.target);
-    //     this.children[currentQuestion].classList.remove('btn-active');
-    //     this.children[currentQuestion].classList.add('btn-inactive');
+    function formatQuestion(questionObj) {
+        if (questionObj.type === 'Xác định lỗi') {
+            return processQuestion(questionObj.question, questionObj.answer[0], questionObj.answer[1], questionObj.answer[2], questionObj.answer[3]);
+        } else if (questionObj.type === 'Từ trái nghĩa' || questionObj.type === 'Từ đồng nghĩa') {
+            return processQuestion(questionObj.question, questionObj.targetPart);
+        }
+        return questionObj.question;
+    }
 
-    //     this.children[clicked].classList.remove('btn-inactive');
-    //     this.children[clicked].classList.add('btn-active');
-    // };
+    function processQuestion(question, ...target) {
+        let result = question;
+        target.forEach(part => {
+            result = result.replace(part, '<u class="question-target">' + part + '</u>');
+        });
+        return result;
+    }
+
+    /* document.getElementById("question-table").onclick = function(e) {
+        let nodes = document.querySelectorAll('#question-table > .btn');
+        let clicked = [].indexOf.call(nodes, e.target);
+        this.children[currentQuestion].classList.remove('btn-active');
+        this.children[currentQuestion].classList.add('btn-inactive');
+
+        this.children[clicked].classList.remove('btn-inactive');
+        this.children[clicked].classList.add('btn-active');
+    }; */
 </script>

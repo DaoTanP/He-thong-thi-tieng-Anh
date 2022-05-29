@@ -44,6 +44,12 @@ body {
     padding: 1rem .5rem;
     /* box-shadow: 0 .2rem .4rem #66666650, 0 0 .2rem #333; */
 }
+.question-target {
+    text-decoration: none;
+    color: var(--black);
+    background-color: var(--primary-shadow);
+    font-weight: 500;
+}
 .requirement {
     font-family: var(--exam-font);
     font-size: .825rem;
