@@ -49,6 +49,8 @@ body {
     color: var(--black);
     background-color: var(--primary-shadow);
     font-weight: 500;
+    border: 2px dashed var(--primary);
+    padding: 0 .25em;
 }
 .requirement {
     font-family: var(--exam-font);
