@@ -55,8 +55,8 @@ if (session_id() == '') {
         let userAccount = document.getElementById('user-account');
         let avatar = userAccount.querySelector('.avatar');
         if (typeof username !== 'undefined' && username !== null) {
-            btnGroup.classList.add('hidden');
-            userAccount.classList.remove('hidden');
+            btnGroup.style.display = 'none';
+            userAccount.style.display = 'block';
             let nameSplit = username.split(' ');
             let firstCharOfNames = '';
             nameSplit.forEach(word => {
@@ -70,8 +70,8 @@ if (session_id() == '') {
                 </div>
             `;
         } else {
-            btnGroup.classList.remove('hidden');
-            userAccount.classList.add('hidden');
+            btnGroup.style.display = 'block';
+            userAccount.style.display = 'none';
         }
     }
 
