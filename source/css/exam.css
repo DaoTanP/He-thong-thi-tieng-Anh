@@ -20,6 +20,7 @@ body {
     position: relative;
     width: 50vw;
     min-width: 480px;
+    min-height: 240px;
     background-color: var(--white);
     padding: 1rem 2rem;
     border-radius: .5rem;
@@ -41,7 +42,7 @@ body {
     /* text-align: center; */
     font-family: var(--exam-font);
     font-size: 1.25rem;
-    padding: 1rem .5rem;
+    /* padding: 1rem .5rem; */
     /* box-shadow: 0 .2rem .4rem #66666650, 0 0 .2rem #333; */
 }
 .question-target {
@@ -58,7 +59,8 @@ body {
 }
 .answer-container {
     font-family: var(--exam-font);
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
+    margin-bottom: 1rem;
 }
 .answer-container input[type="radio"] {
     opacity: 0;
@@ -144,7 +146,6 @@ body {
 .exam-nav-container {
     background-color: var(--white);
     height: 100%;
-    max-height: 100vh;
     display: grid;
     grid-template-rows: 1fr 2fr;
     place-items: start center;
