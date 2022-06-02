@@ -106,8 +106,14 @@ body {
     font-weight: 700;
     outline: 2px solid var(--primary);
 }
+.answer-container input[type="radio"]:checked+label::before {
+    transform: scale(3);
+    outline: 1px solid #333;
+    border: 2px solid #fff;
+}
 .answer-container input[type="radio"]:checked+label::after {
     transform: scale(1.5);
+    border: 2px solid var(--primary-dark);
 }
 .answer-container input[type="radio"]+label.answer-right {
     background-color: var(--primary);
@@ -184,6 +190,7 @@ button[type='submit'] {
 }
 :is(.btn-prev, .btn-next) {
     width: 20%;
+    min-width: 8rem;
     font-size: 1.25rem;
     outline: 2px solid var(--primary);
     box-shadow: -.1em .3em var(--primary), .1em .3em var(--primary);

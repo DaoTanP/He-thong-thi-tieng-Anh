@@ -239,7 +239,7 @@ if (isset($_POST["submit"])) {
         let result = question;
         target.forEach(part => {
             const regEx = new RegExp(part);
-            console.log(regEx);
+            // console.log(regEx);
             result = result.replace(regEx, `<u class="question-target">` + part + `</u>`);
         });
         return result;
