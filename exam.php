@@ -57,7 +57,7 @@ mysqli_query($conn, "set names 'utf8'");
 // khoi tao: so cau hoi cho 1 bai thi, so cau hoi trong db, so trang hien thi
 $questionPerExam = 40;
 //lay cau hoi ngau nhien
-$command1 = "SELECT * FROM `cauhoi` WHERE `LoaiCauHoi`='Xác định lỗi' LIMIT $questionPerExam";
+$command1 = "SELECT * FROM `cauhoi` /*WHERE `LoaiCauHoi`='Đoạn văn'*/ GROUP BY `LoaiCauHoi` LIMIT $questionPerExam";
 $result1 = mysqli_query($conn, $command1);
 
 class Question
@@ -108,7 +108,7 @@ if (isset($_POST["submit"])) {
 
 <script src="./source/javascript/timer.js"></script>
 <script>
-    var thoiGianLamBai = questionArr.length * 15;
+    var thoiGianLamBai = questionArr.length * 30;
     initTimer(thoiGianLamBai, 'progress');
     // resetTimer(questionArr.length);
     let currentQuestion = -1;
@@ -198,19 +198,29 @@ if (isset($_POST["submit"])) {
         for (let i = 0; i < questionArr.length; i++) {
             questionInstance = document.createElement("div");
             questionInstance.className = 'question-holder hidden';
+            if (questionArr[i].type === "Đoạn văn") {
+                questionInstance.classList.add("grid-container");
+                // questionInstance.classList.add("grid-col-evenly");
+                questionInstance.style.gridTemplateColumns = "repeat(2, 1fr)";
+                questionInstance.style.gap = "1rem";
+                questionInstance.style.alignItems = "start";
+            }
             questionInstance.innerHTML = `
             <div class="question-number">${i+1}</div>
-                <p class="requirement txt-center">${questionArr[i].requirement}</p>
-                <p class="question">${formatQuestion(questionArr[i])}</p>
-                <div class="answer-container">
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-A" value="A">
-                    <label for="question-${i+1}-A">${questionArr[i].answer[0]}</label>
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-B" value="B">
-                    <label for="question-${i+1}-B">${questionArr[i].answer[1]}</label>
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-C" value="C">
-                    <label for="question-${i+1}-C">${questionArr[i].answer[2]}</label>
-                    <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-D" value="D">
-                    <label for="question-${i+1}-D">${questionArr[i].answer[3]}</label>
+            ${questionArr[i].type === "Đoạn văn" ? '<div class="requirement passage">'+splitTextToParagraph(questionArr[i].requirement)+'</div>'
+            : '<p class="requirement txt-center">'+questionArr[i].requirement+'</p>'}
+                <div>
+                    <p class="question">${formatQuestion(questionArr[i])}</p>
+                    <div class="answer-container">
+                        <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-A" value="A">
+                        <label for="question-${i+1}-A">${questionArr[i].answer[0]}</label>
+                        <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-B" value="B">
+                        <label for="question-${i+1}-B">${questionArr[i].answer[1]}</label>
+                        <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-C" value="C">
+                        <label for="question-${i+1}-C">${questionArr[i].answer[2]}</label>
+                        <input type="radio" name="question-${i+1}-answer" id="question-${i+1}-D" value="D">
+                        <label for="question-${i+1}-D">${questionArr[i].answer[3]}</label>
+                    </div>
                 </div>
             `;
             questionContainer.appendChild(questionInstance);
@@ -243,6 +253,17 @@ if (isset($_POST["submit"])) {
             result = result.replace(regEx, `<u class="question-target">` + part + `</u>`);
         });
         return result;
+    }
+
+    function splitTextToParagraph(text) {
+        let split = text.split("\n");
+        let htmlString = "";
+
+        split.forEach(p => {
+            htmlString += "<p>" + p + "</p>";
+        });
+
+        return htmlString;
     }
 
     /* document.getElementById("question-table").onclick = function(e) {

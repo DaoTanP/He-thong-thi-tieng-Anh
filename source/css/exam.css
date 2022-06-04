@@ -18,7 +18,9 @@ body {
 }
 .question-container {
     position: relative;
-    width: 50vw;
+    /* width: 50vw; */
+    width: fit-content;
+    max-width: 75vw;
     min-width: 480px;
     min-height: 240px;
     background-color: var(--white);
@@ -56,6 +58,14 @@ body {
 .requirement {
     font-family: var(--exam-font);
     font-size: .825rem;
+}
+.passage {
+    background-color: #99999950;
+    text-indent: 2em;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 .answer-container {
     font-family: var(--exam-font);
@@ -176,7 +186,7 @@ button[type='submit'] {
 }
 .question-table {
     border-top: 2px solid var(--gray);
-    max-height: 100%;
+    max-height: 60vh;
     overflow-y: auto;
     margin: auto;
     padding: 1rem;
