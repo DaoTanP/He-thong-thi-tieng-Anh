@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="./source/css/main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -51,6 +53,56 @@
 				</div>
 			</div>
 		</div>
+
+		<hr style="margin: 4rem 0;">
+
+		<div class="section">
+			<h2 class="section-title txt-center">Đề thi đa dạng</h2>
+			<div class="section-container" style="background-color: var(--white);">
+				<!-- Slider main container -->
+				<div class="swiper" style="max-width: 600px; width: 100%; height: 300px;">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide"><img style="width: inherit; height: inherit; object-fit: cover;" src="./assets/img/banner3.jpg" alt=""></div>
+						<div class="swiper-slide"><img style="width: inherit; height: inherit; object-fit: cover;" src="./assets/img/banner2.jpg" alt=""></div>
+						<div class="swiper-slide"><img style="width: inherit; height: inherit; object-fit: cover;" src="./assets/img/banner1.jpg" alt=""></div>
+					</div>
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-prev" style="background-color: var(--black); color: var(--white); padding: 1rem; box-sizing: content-box;"></div>
+					<div class="swiper-button-next" style="background-color: var(--black); color: var(--white); padding: 1rem; box-sizing: content-box;"></div>
+					<!-- If we need scrollbar -->
+					<!-- <div class="swiper-scrollbar"></div> -->
+					<script>
+						const swiper = new Swiper('.swiper', {
+							// Optional parameters
+							direction: 'horizontal',
+							loop: true,
+							speed: 500,
+							centeredSlides: true,
+							autoplay: {
+								delay: 5000,
+							},
+							// If we need pagination
+							pagination: {
+								el: '.swiper-pagination',
+								clickable: true,
+							},
+							// Navigation arrows
+							navigation: {
+								nextEl: '.swiper-button-next',
+								prevEl: '.swiper-button-prev',
+							},
+							// And if we need scrollbar
+							// scrollbar: {
+							// 	el: '.swiper-scrollbar',
+							// },
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+
 		<hr style="margin: 4rem 0;">
 
 	</div>
