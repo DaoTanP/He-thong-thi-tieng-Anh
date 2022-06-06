@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <style>
+        label {
+            display: block;
+            text-align: left;
+        }
+
+        input[type='checkbox'] {
+            margin-right: .5rem;
+            transform: scale(1.25);
+            accent-color: var(--primary-dark);
+        }
+    </style>
 </head>
 
 <body>
@@ -50,13 +62,23 @@
             </div>
         </div>
         <div class="section" style="position: sticky; top: 4rem; height: fit-content;">
-            <h1 class="section-title txt-center">Loại bài thi</h1>
+            <h1 class="section-title txt-center">Bộ lọc</h1>
             <div class="section-container">
-                <ul>
-                    <li><input type="checkbox" name="a" id=""><label for="a">a</label></li>
-                    <li><input type="checkbox" name="b" id=""><label for="b">b</label></li>
-                    <li><input type="checkbox" name="c" id=""><label for="c">c</label></li>
-                </ul>
+                <div class="category">
+                    <h3 style="margin: 0;">Loại bài thi</h3>
+                    <Label for="tuVung"><input type="checkbox" name="" id="tuVung">Từ vựng</Label>
+                    <Label for="maoTu"><input type="checkbox" name="" id="maoTu">Mạo từ</Label>
+                    <Label for="trongAm"><input type="checkbox" name="" id="trongAm">Trọng âm</Label>
+                    <Label for="thptqg"><input type="checkbox" name="" id="thptqg">Đề thi THPTQG</Label>
+                </div>
+                <hr style="width: 100%;">
+                <div class="category">
+                    <h3 style="margin: 0;">Loại bài thi</h3>
+                    <Label for="tuVung"><input type="checkbox" name="" id="tuVung">Từ vựng</Label>
+                    <Label for="maoTu"><input type="checkbox" name="" id="maoTu">Mạo từ</Label>
+                    <Label for="trongAm"><input type="checkbox" name="" id="trongAm">Trọng âm</Label>
+                    <Label for="thptqg"><input type="checkbox" name="" id="thptqg">Đề thi THPTQG</Label>
+                </div>
             </div>
         </div>
     </div>
@@ -105,10 +127,12 @@ while ($item = mysqli_fetch_array($items)) {
 
 echo 'let pages="";';
 if ($_GET['page'] > 0) {
-    echo 'pages +=`<a href="examSelecting.php?page=' . ($_GET['page'] - 1) . '">&laquo;</a>`;';
+    echo 'pages +=`<a href="examSelecting.php?page=' . ($_GET['page'] - 1) . '">&larr;</a>`;';
 } else {
-    echo 'pages +=`<a href="#">&laquo;</a>`;';
+    echo 'pages +=`<a href="#">&larr;</a>`;';
 }
+
+//show all pages
 for ($i = 0; $i < $pages; $i++) {
     if ($_GET['page'] == $i) {
         echo 'pages+=`<a class="active" href="examSelecting.php?page=' . $i . '">' . ($i + 1) . '</a>`;';
@@ -116,10 +140,11 @@ for ($i = 0; $i < $pages; $i++) {
         echo 'pages+=`<a href="examSelecting.php?page=' . $i . '">' . ($i + 1) . '</a>`;';
     }
 }
+
 if ($_GET['page'] < $pages - 1) {
-    echo 'pages +=`<a href="examSelecting.php?page=' . ($_GET['page'] + 1) . '">&raquo;</a>`;';
+    echo 'pages +=`<a href="examSelecting.php?page=' . ($_GET['page'] + 1) . '">&rarr;</a>`;';
 } else {
-    echo 'pages +=`<a href="#">&raquo;</a>`;';
+    echo 'pages +=`<a href="#">&rarr;</a>`;';
 }
 echo '</script>';
 ?>

@@ -230,6 +230,9 @@ hr {
 .card-subtext :not(:last-child) {
     margin-right: auto;
 }
+label {
+    user-select: none;
+}
 .txt-wrapped {
     -moz-box-orient: vertical;
     -webkit-box-orient: vertical;
