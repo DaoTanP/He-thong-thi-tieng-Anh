@@ -18,8 +18,11 @@ body {
 }
 .question-container {
     position: relative;
-    width: 50vw;
+    /* width: 50vw; */
+    width: fit-content;
+    max-width: 75vw;
     min-width: 480px;
+    min-height: 240px;
     background-color: var(--white);
     padding: 1rem 2rem;
     border-radius: .5rem;
@@ -41,7 +44,7 @@ body {
     /* text-align: center; */
     font-family: var(--exam-font);
     font-size: 1.25rem;
-    padding: 1rem .5rem;
+    /* padding: 1rem .5rem; */
     /* box-shadow: 0 .2rem .4rem #66666650, 0 0 .2rem #333; */
 }
 .question-target {
@@ -49,14 +52,25 @@ body {
     color: var(--black);
     background-color: var(--primary-shadow);
     font-weight: 500;
+    border: 2px dashed var(--primary);
+    padding: 0 .25em;
 }
 .requirement {
     font-family: var(--exam-font);
     font-size: .825rem;
 }
+.passage {
+    background-color: #99999950;
+    text-indent: 2em;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    max-height: 60vh;
+    overflow-y: auto;
+}
 .answer-container {
     font-family: var(--exam-font);
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
+    margin-bottom: 1rem;
 }
 .answer-container input[type="radio"] {
     opacity: 0;
@@ -102,8 +116,14 @@ body {
     font-weight: 700;
     outline: 2px solid var(--primary);
 }
+.answer-container input[type="radio"]:checked+label::before {
+    transform: scale(3);
+    outline: 1px solid #333;
+    border: 2px solid #fff;
+}
 .answer-container input[type="radio"]:checked+label::after {
     transform: scale(1.5);
+    border: 2px solid var(--primary-dark);
 }
 .answer-container input[type="radio"]+label.answer-right {
     background-color: var(--primary);
@@ -142,7 +162,6 @@ body {
 .exam-nav-container {
     background-color: var(--white);
     height: 100%;
-    max-height: 100vh;
     display: grid;
     grid-template-rows: 1fr 2fr;
     place-items: start center;
@@ -167,7 +186,7 @@ button[type='submit'] {
 }
 .question-table {
     border-top: 2px solid var(--gray);
-    max-height: 100%;
+    max-height: 60vh;
     overflow-y: auto;
     margin: auto;
     padding: 1rem;
@@ -181,6 +200,7 @@ button[type='submit'] {
 }
 :is(.btn-prev, .btn-next) {
     width: 20%;
+    min-width: 8rem;
     font-size: 1.25rem;
     outline: 2px solid var(--primary);
     box-shadow: -.1em .3em var(--primary), .1em .3em var(--primary);

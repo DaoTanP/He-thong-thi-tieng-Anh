@@ -32,6 +32,7 @@
     font-family: var(--primary-font);
     box-sizing: border-box;
     transition: .1s;
+    line-height: 1.6;
 }
 *::before, *::after {
     box-sizing: inherit;
@@ -56,9 +57,15 @@ hr {
     display: none;
 }
 
-.img-full {
+.img-fit-width {
     width: 100%;
     height: auto;
+    object-fit: cover;
+}
+.img-fit-height {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
 }
 .svg-1 {
     background-size: 64px;
@@ -118,6 +125,7 @@ hr {
     font-size: 1.5rem;
     padding: .5rem 1rem;
     margin-top: 0;
+    margin-bottom: 0;
 }
 .section-container {
     background-color: var(--primary-shadow);
@@ -146,6 +154,33 @@ hr {
 }
 .section-item p {
     color: var(--dark-gray);
+}
+.pagination {
+    display: grid;
+    justify-content: center;
+    gap: 0.5rem;
+    /* flex-direction: row; */
+    grid-auto-flow: column;
+    grid-auto-columns: fit-content;
+    margin: auto;
+}
+.pagination a {
+    padding: 0 .5em;
+    background-color: var(--primary);
+    text-decoration: none;
+    color: var(--white);
+    text-align: center;
+}
+.pagination a.active {
+    background-color: var(--white);
+    outline: 2px solid var(--primary-dark);
+    color: var(--black);
+    border-radius: .5rem;
+}
+.pagination a:hover:not(.active) {
+    background-color: var(--primary-dark);
+    /* color: var(--black); */
+    border-radius: .5rem;
 }
 .card {
     width: 100%;
@@ -189,11 +224,14 @@ hr {
     position: absolute;
     bottom: 0;
 }
-.card-subtext :not(.btn) {
-    justify-self: left;
+.card-subtext :last-child {
+    margin-left: auto;
 }
-.card-subtext .btn {
-    justify-self: right;
+.card-subtext :not(:last-child) {
+    margin-right: auto;
+}
+label {
+    user-select: none;
 }
 .txt-wrapped {
     -moz-box-orient: vertical;
@@ -262,6 +300,9 @@ hr {
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
+.avatar:hover {
+    outline: 5px solid #66666675;
+}
 /* .avatar * {
     color: transparent;
     background-color: transparent;
@@ -279,7 +320,15 @@ hr {
     box-shadow: 0 .5rem .75rem var(--black), 0 0 .5rem var(--gray);
 }
 .dropdown.opened>.dropdown-content {
-    width: max-content;
+    overflow: hidden;
+    position: absolute;
+    min-width: 256px;
+    z-index: 991;
+    right: 0px;
+    margin-right: 4px;
+    max-height: calc(-81px + 100vh);
+    min-height: 256px;
+    max-width: calc(-24px + 100vw);
     padding: 1rem;
     display: block;
     top: 100%;
@@ -548,6 +597,12 @@ hr {
 
 @media screen and (max-width: 800px) {
     .banner {
+        flex-direction: column;
+    }
+    .hero-section {
+        height: auto;
+    }
+    .flex-container {
         flex-direction: column;
     }
 }

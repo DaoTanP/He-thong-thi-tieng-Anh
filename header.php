@@ -55,8 +55,10 @@ if (session_id() == '') {
         let userAccount = document.getElementById('user-account');
         let avatar = userAccount.querySelector('.avatar');
         if (typeof username !== 'undefined' && username !== null) {
-            btnGroup.classList.add('hidden');
-            userAccount.classList.remove('hidden');
+            // btnGroup.style.display = 'none';
+            // userAccount.style.display = 'block';
+            btnGroup.classList.add("hidden");
+            userAccount.classList.remove("hidden");
             let nameSplit = username.split(' ');
             let firstCharOfNames = '';
             nameSplit.forEach(word => {
@@ -65,13 +67,17 @@ if (session_id() == '') {
             avatar.dataset.label = firstCharOfNames.substring(0, 2).toUpperCase();
             avatar.innerHTML = `
                 <div class="dropdown-content" style='user-select: none;'>
+                    <div class="avatar" data-label="${avatar.dataset.label}" style="margin: auto; font-size: 2rem;"></div>
                     <h4 class="txt-center">${username}</h4>
-                    <a href="logout.php">Đăng xuất</a>
+                    <hr>
+                    <a href="logout.php" class="btn btn-center btn-filled" style="display:block; width:80%; text-align: center;">Đăng xuất</a>
                 </div>
             `;
         } else {
-            btnGroup.classList.remove('hidden');
-            userAccount.classList.add('hidden');
+            // btnGroup.style.display = 'block';
+            // userAccount.style.display = 'none';
+            btnGroup.classList.remove("hidden");
+            userAccount.classList.add("hidden");
         }
     }
 
