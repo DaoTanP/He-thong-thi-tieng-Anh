@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 23, 2022 lúc 09:10 AM
+-- Thời gian đã tạo: Th6 06, 2022 lúc 09:36 AM
 -- Phiên bản máy phục vụ: 10.1.37-MariaDB
 -- Phiên bản PHP: 5.6.40
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `a`
+-- Cơ sở dữ liệu: `test`
 --
 
 -- --------------------------------------------------------
@@ -162,7 +162,93 @@ INSERT INTO `cauhoi` (`MaCauHoi`, `YeuCau`, `CauHoi`, `LoaiCauHoi`, `A`, `B`, `C
 (NULL, '', 'Danger', NULL, 'er', 'ous', 'ed', 'en', 'B'),
 (NULL, NULL, 'Impressive', NULL, 'de', 'in', 'un', 'out', 'C'),
 (NULL, NULL, 'Vegetarian', NULL, 'an', 'un', 'en', 'non', 'D'),
-(NULL, NULL, 'Monthly', NULL, 'bi', 'bye', 'anti', 'over', 'A');
+(NULL, NULL, 'Monthly', NULL, 'bi', 'bye', 'anti', 'over', 'A'),
+(NULL, NULL, 'I gave ___ one rupee coin to him.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'Sivakumar is ___ engineer.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'She thanked me for ___ help I rendered.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'Ice is ___ frozen water.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'It is ___ one act play.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'I have never known so wet ___ summer.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'He was given a reward for ___ bravery.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, '____ palm tree is generally very tall.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'Taj Mahal is ___ wonder of the world.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ water is that river is not fit for drinking.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'It is ___ absurd story.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'Let us play ___ chess.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, '____ honest man is always respected.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'Mexico is ___ large city.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'He is ____ honest official.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'It is ___ one man show.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ Russians drink Vodka.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'Let us go to a restaurant and have ____ coffee.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ Queen Victoria Introduced English education in India.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'He is ____ member of our club.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '___ meat you cooked tasted good.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'Rohan is holding ___ honorary post.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'You can do the work if you have __ patience.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'My sister is living in ____ United States of America.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'This is ____ pen which I lost last week.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'There is ___ hourly bus service here.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'With ____ united effort, I achieve it.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '___ old man returned with his dog.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'The workers formed ___ union.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'Padmasi title is ___ honour conferred upon people for their services.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'It is ___ one man show.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ Russians drink Vodka.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'Let us go to a restaurant and have ____ coffee.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ Queen Victoria Introduced English education in India.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'He is ____ member of our club.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '___ meat you cooked tasted good.\r\n', NULL, 'aa', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'Rohan is holding ___ honorary post.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'You can do the work if you have __ patience.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'My sister is living in ____ United States of America.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'This is ____ pen which I lost last week.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'There is ___ hourly bus service here.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'With ____ united effort, I achieve it.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '___ old man returned with his dog.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'The workers formed ___ union.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'Padmasi title is ___ honour conferred upon people for their services.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'It is ___ one man show.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ Russians drink Vodka.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'Let us go to a restaurant and have ____ coffee.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '____ Queen Victoria Introduced English education in India.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'He is ____ member of our club.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '___ meat you cooked tasted good.\r\n', NULL, 'aa', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'Rohan is holding ___ honorary post.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'You can do the work if you have __ patience.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'My sister is living in ____ United States of America.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'This is ____ pen which I lost last week.', NULL, 'a', 'an', 'the', 'Ø', 'C'),
+(NULL, NULL, 'There is ___ hourly bus service here.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'With ____ united effort, I achieve it.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, '___ old man returned with his dog.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'The workers formed ___ union.', NULL, 'a', 'an', 'the', 'Ø', 'A'),
+(NULL, NULL, 'Padmasi title is ___ honour conferred upon people for their services.', NULL, 'a', 'an', 'the', 'Ø', 'B'),
+(NULL, NULL, 'Let us play ___ tennis.', NULL, 'a', 'an', 'the', 'Ø', 'D'),
+(NULL, NULL, 'Season', NULL, 'seasonal', 'seasoning', 'seasonable', 'seasoned', 'D'),
+(NULL, NULL, 'Affection', NULL, 'affect', 'affectionate', 'affectingly', 'affectionately', 'B'),
+(NULL, NULL, 'Colour', NULL, 'coloury', 'colouring', 'colourless', 'colourist', 'C'),
+(NULL, NULL, 'Slow', NULL, 'slow', 'slowly', 'slowingly', 'none of these', 'A'),
+(NULL, NULL, 'Parliament', NULL, 'parley', 'parliamentarian', 'parliamentary', 'parleyed', 'C'),
+(NULL, NULL, 'Basis', NULL, 'basic', 'basically', 'basement', 'basil', 'A'),
+(NULL, NULL, 'Thank', NULL, 'thankingly', 'thankfully', 'thankful', 'none of these', 'B'),
+(NULL, NULL, 'Despair', NULL, 'despairing', 'despairingly', 'desperate', 'none of these', 'C'),
+(NULL, NULL, 'Gaudiness', NULL, 'gaudy', 'gaud', 'gaudin', 'gaudily', 'D'),
+(NULL, NULL, 'Care', NULL, 'carelessness', 'careful', 'caringly', 'carfulness', 'B'),
+(NULL, NULL, 'Direct', NULL, 'directly', 'directfully', 'directively', 'directingly', 'A'),
+(NULL, NULL, 'History', NULL, 'historically', 'historical', 'histrionics', 'histrionic', 'B'),
+(NULL, NULL, 'Habit', NULL, 'habitat', 'habitually', 'habitual', 'habitable', 'C'),
+(NULL, NULL, 'Laudation', NULL, 'laud', 'laudable', 'lauding', 'laudably', 'A'),
+(NULL, NULL, 'Diplomacy', NULL, 'Diploma', 'diplomatic', 'diplomat', 'diplomatically', 'B'),
+(NULL, NULL, 'Explosion', NULL, 'explorer', 'exploration', 'explosive', 'explorative', 'C'),
+(NULL, NULL, 'Despair', NULL, 'desperate', 'despairing', 'despairingly', 'none of these', 'A'),
+(NULL, NULL, 'Parliament', NULL, 'parley', 'parleyed', 'parliamentary', 'parliamentarian', 'C'),
+(NULL, NULL, 'Absurdity', NULL, 'absurdly', 'absurd', 'absurdingly', 'none of these', 'B'),
+(NULL, NULL, 'Talk', NULL, 'talking', 'talker', 'talks', 'talkactive', 'D'),
+(NULL, NULL, 'Affect', NULL, 'affection', 'affectedly', 'affectfully', 'affectingly', 'D'),
+(NULL, NULL, 'Youth', NULL, 'youths', 'youthfully', 'youthfull', 'none of these', 'D'),
+(NULL, NULL, 'Restriction', NULL, 'restrict', 'restrictive', 'restricted', 'none of these', 'C'),
+(NULL, NULL, 'Exhaustion', NULL, 'exhausted', 'exhaustive', 'exhausting', 'exhaust', 'A'),
+(NULL, NULL, 'Experiment', NULL, 'experimental', 'experimentally', 'experimenter', 'experimentation', 'A');
 
 -- --------------------------------------------------------
 
