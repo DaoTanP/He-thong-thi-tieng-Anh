@@ -13,6 +13,7 @@ require "checkLogin.php";
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="./source/css/exam.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/shakrmedia/tuesday@v1.1.0/build/tuesday.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <script src="./source/javascript/helper.js"></script>
 </head>

@@ -12,8 +12,40 @@
 	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
 	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 	<style>
+		.section-item {
+			margin: 1rem 0;
+		}
+
 		hr {
 			margin: 4rem 0;
+		}
+
+		input:not([type="submit"]),
+		textarea {
+			background-color: transparent;
+			padding: .5rem 0;
+			width: 100%;
+			border: none;
+			border-bottom: 2px solid var(--primary);
+			outline: none;
+		}
+
+		textarea {
+			padding: .5rem .5rem;
+			border: 2px solid var(--primary);
+		}
+
+		input:not([type="submit"]):focus {
+			border-bottom: 2px solid var(--secondary);
+		}
+
+		textarea:focus {
+			border: 2px solid var(--secondary);
+		}
+
+		[type="submit"] {
+			margin: 1rem 5px;
+			font-size: 1.5rem;
 		}
 	</style>
 </head>
@@ -37,6 +69,7 @@
 		</div>
 	</div>
 	<div class="container">
+		<hr>
 		<div class="section">
 			<h2 class="section-title txt-center">Tại sao chọn chúng tôi?</h2>
 			<div class="flex-container" style="align-items: stretch;">
@@ -63,16 +96,16 @@
 
 		<div class="flex-container">
 			<h1 class="txt-center">Website thi tiếng Anh tiện lợi, nhanh chóng và phù hợp với mọi trình độ!</h1>
-			<img class="img-fit-height" style="max-height: 90vh;" src="./assets/img/illustration/developer-team.svg" alt="">
+			<img class="img-fit-height" style="max-height: 70vh;" src="./assets/img/illustration/developer-team.svg" alt="">
 		</div>
 
 		<hr>
 
 		<div class="flex-container">
 			<!-- Slider main container -->
-			<div class="swiper" style="max-width: 600px; width: 100%; height: 300px;">
+			<div class="swiper" style="max-width: 600px; width: 100%; height: 350px;">
 				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
+				<div class="swiper-wrapper" style="height: 300px;">
 					<!-- Slides -->
 					<div class="swiper-slide"><img style="width: inherit; height: inherit; object-fit: cover;" src="./assets/img/banner3.jpg" alt=""></div>
 					<div class="swiper-slide"><img style="width: inherit; height: inherit; object-fit: cover;" src="./assets/img/study-unsplash.jpg" alt=""></div>
@@ -81,8 +114,8 @@
 					<div class="swiper-slide"><img style="width: inherit; height: inherit; object-fit: cover;" src="./assets/img/banner1.jpg" alt=""></div>
 				</div>
 				<div class="swiper-pagination"></div>
-				<div class="swiper-button-prev" style="background-color: var(--black); color: var(--white); padding: 1rem; box-sizing: content-box;"></div>
-				<div class="swiper-button-next" style="background-color: var(--black); color: var(--white); padding: 1rem; box-sizing: content-box;"></div>
+				<!-- <div class="swiper-button-prev" style="background-color: var(--black); color: var(--white); padding: 1rem; box-sizing: content-box; transform: translateY(-35px);"></div> -->
+				<!-- <div class="swiper-button-next" style="background-color: var(--black); color: var(--white); padding: 1rem; box-sizing: content-box; transform: translateY(-35px);"></div> -->
 				<!-- If we need scrollbar -->
 				<!-- <div class="swiper-scrollbar"></div> -->
 				<script>
@@ -92,8 +125,9 @@
 						loop: true,
 						speed: 500,
 						centeredSlides: true,
+						grabCursor: true,
 						autoplay: {
-							delay: 5000,
+							delay: 3000,
 						},
 						// If we need pagination
 						pagination: {
@@ -117,13 +151,24 @@
 
 		<hr>
 
-		<div class="flex-container">
-			<div>
-				<h1 class="txt-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, ullam.</h1>
-				<a href="signup.php" class="btn-center btn btn-filled">Đăng kí tài khoản</a>
+		<div class="section">
+			<h1 class="section-title txt-center">Liên hệ với chúng tôi</h1>
+			<div class="flex-container" style="gap: 2rem; background-color: var(--white); padding: .5rem;">
+				<form action="#" method="post" style="width: 100%;">
+					<p style="margin-bottom: 0;">Họ và tên:</p>
+					<input type="text">
+					<p style="margin-bottom: 0;">Số điện thoại:</p>
+					<input type="number">
+					<p style="margin-bottom: 0;">Email:</p>
+					<input type="email">
+					<p style="margin-bottom: 0;">Tin nhắn:</p>
+					<textarea name="" id="" cols="30" rows="5"></textarea>
+					<input type="submit" value="Gửi tin nhắn" class="btn btn-filled display-block">
+				</form>
+				<img class="img-fit-height" style="max-height: 70vh;" src="./assets/img/illustration/virtual-assistant.svg" alt="">
 			</div>
-			<img class="img-fit-height" style="max-height: 90vh;" src="./assets/img/illustration/success.svg" alt="">
 		</div>
+	</div>
 	</div>
 
 	<?php
