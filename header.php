@@ -5,7 +5,7 @@ if (session_id() == '') {
 ?>
 <div class="grid-container header" id="header">
     <a href="index.php" class="grid-child-left">
-        <img class="logo-header" src="./assets/img/abc-alphabet-basic-svgrepo-com.svg" alt="logo" style="width: 48px; height: 48px;">
+        <img class="logo-header" src="./assets/img/logo.png" alt="logo" style="width: 48px; height: 48px;">
     </a>
     <nav class="full-height">
         <ul class="navbar-list grid-container full-height">

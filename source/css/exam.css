@@ -47,7 +47,7 @@ body {
     /* padding: 1rem .5rem; */
     /* box-shadow: 0 .2rem .4rem #66666650, 0 0 .2rem #333; */
 }
-.question-target {
+b.question-target {
     text-decoration: none;
     color: var(--black);
     background-color: var(--primary-shadow);
@@ -55,12 +55,18 @@ body {
     border: 2px dashed var(--primary);
     padding: 0 .25em;
 }
+u.question-target {
+    text-decoration: underline;
+    color: var(--primary);
+    /* background-color: var(--primary); */
+    font-weight: 700;
+}
 .requirement {
     font-family: var(--exam-font);
     font-size: .825rem;
 }
 .passage {
-    background-color: #99999950;
+    background-color: #dddddd50;
     text-indent: 2em;
     padding: 0 1rem;
     margin: 1rem 0;

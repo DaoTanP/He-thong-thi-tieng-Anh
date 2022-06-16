@@ -261,19 +261,35 @@ if (isset($_POST["submit"])) {
 
     function formatQuestion(questionObj) {
         if (questionObj.type === 'Xác định lỗi') {
-            return processQuestion(questionObj.question, questionObj.answer[0], questionObj.answer[1], questionObj.answer[2], questionObj.answer[3]);
+            return processQuestion(questionObj.question, '', 'b', questionObj.answer[0], questionObj.answer[1], questionObj.answer[2], questionObj.answer[3]);
         } else if (questionObj.type === 'Từ trái nghĩa' || questionObj.type === 'Từ đồng nghĩa') {
-            return processQuestion(questionObj.question, questionObj.targetPart);
+            return processQuestion(questionObj.question, '', 'b', questionObj.targetPart);
+        } else if (questionObj.type === 'Giao tiếp') {
+            return '<pre>' + questionObj.question + '</pre>';
+        } else if (questionObj.type === 'Phát âm') {
+            let amTiet = questionObj.targetPart.split(' ');
+            let processed = questionObj.question.split(':');
+
+            if (amTiet.length == 1)
+                return processed[0] + ':' + processQuestion(processed[1], 'g', 'u', questionObj.targetPart);
+            else {
+                let words = processed[1].split(',');
+                processed[1] = '';
+                for (let i = 0; i < words.length; i++) {
+                    processed[1] += processQuestion(words[i], '', 'u', amTiet[i]) + ', ';
+                }
+                return processed[0] + ':' + processed[1];
+            }
         }
         return questionObj.question;
     }
 
-    function processQuestion(question, ...target) {
+    function processQuestion(question, regexTag, formatTag, ...target) {
         let result = question;
         target.forEach(part => {
-            const regEx = new RegExp(part);
+            const regEx = new RegExp(part, regexTag);
             // console.log(regEx);
-            result = result.replace(regEx, `<u class="question-target">` + part + `</u>`);
+            result = result.replace(regEx, `<` + formatTag + ` class="question-target">` + part + `</` + formatTag + `>`);
         });
         return result;
     }
