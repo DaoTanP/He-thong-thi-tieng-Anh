@@ -1,15 +1,10 @@
-create or replace procedure update_maCauHoi() begin
-    for row in (
-        select * from cauhoi WHERE MaCauHoi is null
-    ) do     
-    	IF
-        UPDATE cauhoi SET MaCauHoi = LAST_INSERT_ID()
-            WHERE person.id = var_user.id_person;
-    end for;
-end;
-
-call _tmp_procedure();
-
-//kiem tra trung lap
+// Kiểm tra câu hỏi trùng lặp
 SELECT * FROM `cauhoi` GROUP BY `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung`;
 SELECT *, COUNT(*) FROM `cauhoi` GROUP BY `LoaiCauHoi`, `A`, `B`, `C`, `D`, `DapAnDung` ORDER BY COUNT(*) DESC;
+
+//Thống kê số câu hỏi của mỗi loại
+SELECT `LoaiCauHoi`, COUNT(*) FROM `cauhoi` GROUP BY `LoaiCauHoi` ORDER BY COUNT(*) DESC;
+SELECT `LoaiCauHoi`, COUNT(*) FROM `cauhoi` GROUP BY `LoaiCauHoi` HAVING COUNT(*) >= 30 ORDER BY COUNT(*) DESC;
+
+//Lấy ds câu hỏi
+SELECT `MaDeThi`, `DanhSachCauHoi`, `cauhoi`.* FROM `cauhoi`, `dethi` WHERE `MaDeThi` = "MDDV-2" AND `MaCauHoi` != "" AND `DanhSachCauHoi` LIKE concat( "%", `MaCauHoi`, "%");

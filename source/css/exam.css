@@ -43,7 +43,7 @@ body {
 .question {
     /* text-align: center; */
     font-family: var(--exam-font);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     /* padding: 1rem .5rem; */
     /* box-shadow: 0 .2rem .4rem #66666650, 0 0 .2rem #333; */
 }

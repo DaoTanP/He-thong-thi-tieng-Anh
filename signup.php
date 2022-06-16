@@ -11,7 +11,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng kí tài khoản</title>
     <link rel="stylesheet" href="./source/css/login-signup.css">
-    <link rel="stylesheet" href="./source/css/base.css">
     <link rel="stylesheet" href="./source/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -20,6 +19,11 @@ session_start();
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@100;300;400;500;700&display=swap');
     </style>
     <script>
+        if (typeof hideForm !== 'undefined' && hideForm == true) {
+            document.getElementById('sign-up-form').style.display = 'none';
+            document.getElementById('OTP-validate').style.display = 'block';
+        }
+
         function errorHandling() {
             let messageBox = document.querySelector('.error-message');
             let usernameErrorMessage = "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác hoặc đi tới trang <a href='login.php'>đăng nhập</a>.";
@@ -57,8 +61,8 @@ session_start();
 </head>
 
 <body onload="errorHandling();">
-    <div class=" form-container">
-        <div class="form">
+    <div class="form-container">
+        <div class="form" id="sign-up-form">
             <span class="title">Đăng kí</span>
             <div class="error-message">
             </div>
@@ -83,6 +87,17 @@ session_start();
             </form>
             <p class="display-block">Đã có tài khoản? <a href="login.php" class="text signup-text">Đăng nhập</a>.</p>
         </div>
+        <!-- <div class="form" id="OTP-validate" style="display: none;">
+            <span class="title">Nhập mã xác thực</span>
+            <div class="error-message">
+                <p>Một mã xác thực đã được gửi về email của bạn, kiểm tra hòm thư và nhập mã vào ô bên dưới để hoàn tất đăng kí</p>
+            </div>
+            <div class="input-field">
+                <input type="text" name="Username" placeholder="Nhập tên đăng nhập" required>
+                <i class="fa-solid fa-accessible-icon"></i>
+                <input class="btn btn-filled" type="submit" value="Đăng kí" required>
+            </div>
+        </div> -->
     </div>
 </body>
 
@@ -130,6 +145,12 @@ if ($password != $repassword) {
     echo '<script>var passwordError = true</script>';
     exit;
 }
+// echo "<script>var hideForm = true;</script>";
+// $OTPCode = random_int(100000, 999999);
+// $chude = "chu de";
+// $msg = "Mã xác thực của bạn: " . $OTPCode;
+// $header = "From: abcd.@gmail.com";
+// mail($email, $chude, $msg, $header);
 //Lưu thông tin thành viên vào bảng
 $add = "INSERT INTO `nguoidung` (`TenDangNhap`, `Email`, `MatKhau`) VALUE ('{$username}','{$email}','{$password}')";
 $addmember = mysqli_query($conn, $add);

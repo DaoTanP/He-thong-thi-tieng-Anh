@@ -49,12 +49,24 @@ body {
     background-color: #ff000033;
 }
 
+.form .success-message {
+    font-weight: 500;
+    width: 100%;
+    margin-top: 2rem;
+    padding: .5em 1em;
+    border: 2px solid var(--green);
+    color: var(--green);
+    border-radius: .5em;
+    background-color: #27ae6033;
+}
+
 .form .input-field, .form *[type='submit'] {
     position: relative;
     height: 3rem;
     width: 100%;
     margin-top: 2rem;
 }
+
 .input-field input {
     font-size: 1.5rem;
     background-color: transparent;

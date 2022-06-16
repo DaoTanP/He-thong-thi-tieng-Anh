@@ -23,7 +23,7 @@
     </script>
 
     <?php
-    require './source/html/error404.html';
+    require './source/html/mainteinance.html';
     require './source/html/footer.html';
     ?>
 </body>

@@ -78,12 +78,26 @@ const onTimesUp = (func) => {
     func();
 }
 
-function startTimer() {
-    if (isNaN(parseInt(localStorage.time, 10)) || parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
-        localStorage.time = (Date.now() / 1000) + timeLimit;
+// function startTimer() {
+//     if (isNaN(parseInt(localStorage.time, 10)) || parseInt(localStorage.time, 10) - (Date.now() / 1000) < 0)
+//         localStorage.time = (Date.now() / 1000) + timeLimit;
 
+//     timerInterval = setInterval(() => {
+//         timeLeft = Math.round(parseInt(localStorage.time, 10) - (Date.now() / 1000));
+//         document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
+//         setCircleDasharray(timeLeft);
+//         setRemainingPathColor(timeLeft);
+
+//         if (timeLeft <= 0) {
+//             onTimesUp(timesUpEvent);
+//         }
+//     }, 1000);
+// }
+
+function startTimer() {
+    timeLeft = timeLimit;
     timerInterval = setInterval(() => {
-        timeLeft = Math.round(parseInt(localStorage.time, 10) - (Date.now() / 1000));
+        timeLeft--;
         document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
         setCircleDasharray(timeLeft);
         setRemainingPathColor(timeLeft);

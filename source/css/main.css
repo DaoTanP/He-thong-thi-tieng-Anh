@@ -208,10 +208,14 @@ hr {
 .card-title {
     margin: 0;
     font-weight: 400;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
 .card-text {
     position: relative;
+}
+.card-description {
+    font-size: 0.9rem;
+    color: var(--black);
 }
 .card-subtext {
     border-top: 1px solid #33333375;

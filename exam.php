@@ -60,9 +60,6 @@ mysqli_query($conn, "set names 'utf8'");
 if (!isset($_POST['examCode']))
     header('Location: examSelecting.php');
 
-$result1 = mysqli_query($conn, 'SELECT `MaDeThi`, `DanhSachCauHoi`, `cauhoi`.*  FROM `cauhoi`, `dethi` WHERE `MaDeThi` = "' . $_POST['examCode'] . '" AND `MaCauHoi` != "" AND `DanhSachCauHoi` LIKE concat( "%", `MaCauHoi`, "%")') or die("khong lay duoc cau hoi");
-$result2 = mysqli_query($conn, 'SELECT `ThoiGian` FROM `dethi` WHERE `MaDeThi` = "' . $_POST['examCode'] . '"') or die("khong lay duoc thoi gian lam bai");
-
 class Question
 {
     public $type;
@@ -85,26 +82,41 @@ class Question
 $rightAnswerArr = array();
 $question = new Question();
 $arrIndex = 0;
-echo '<script>const questionArr = [];';
+$dsCauHoi = '';
+$dsCauHoiArr;
+$tgLamBai = 0;
 
-while ($row = mysqli_fetch_array($result1)) {
-    array_push($rightAnswerArr, $row['DapAnDung']);
-    $question->setValue($row['LoaiCauHoi'], $row['YeuCau'], $row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null, $row['ChuThich']);
-    echo 'questionArr[' . $arrIndex++ . '] = ' . json_encode($question) . ';';
+$deThiQuery = mysqli_query($conn, 'SELECT `ThoiGian`, `DanhSachCauHoi` FROM `dethi` WHERE `MaDeThi` = "' . $_POST['examCode'] . '"') or die("khong lay duoc de thi");
+while ($deThi = mysqli_fetch_array($deThiQuery)) {
+    $dsCauHoi = $deThi['DanhSachCauHoi'];
+    $tgLamBai = $deThi['ThoiGian'];
 }
-echo 'var thoiGianLamBai = parseInt(' . mysqli_fetch_row($result2)[0] . ', 10);';
+echo '<script> var thoiGianLamBai = parseInt(' . $tgLamBai . ', 10); </script>';
+
+#region Tạo mảng câu hỏi
+$dsCauHoiArr = explode(' ', $dsCauHoi);
+echo '<script>const questionArr = [];';
+for ($i = 0; $i < count($dsCauHoiArr); $i++) {
+    $cauHoiQuery = mysqli_query($conn, 'SELECT * FROM `cauhoi` WHERE `MaCauHoi` = "' . $dsCauHoiArr[$i] . '"') or die("khong lay duoc cau hoi");
+    while ($row = mysqli_fetch_array($cauHoiQuery)) {
+        array_push($rightAnswerArr, $row['DapAnDung']);
+        $question->setValue($row['LoaiCauHoi'], $row['YeuCau'], $row['CauHoi'], array($row['A'], $row['B'], $row['C'], $row['D']), null, $row['ChuThich']);
+        echo 'questionArr[' . $arrIndex++ . '] = ' . json_encode($question) . ';';
+    }
+}
 echo '</script>';
+#endregion
 
 if (isset($_POST["submit"])) {
-    $score = 0;
+    $diem = 0;
     $soCauDung = 0;
     for ($i = 0; $i < $arrIndex; $i++) {
         if (isset($_POST["question-" . ($i + 1) . "-answer"]) && $rightAnswerArr[$i] == $_POST["question-" . ($i + 1) . "-answer"]) {
-            $score += 10 / $arrIndex;
+            $diem += 10 / $arrIndex;
             $soCauDung++;
         }
     }
-    echo '<script>const score = ' . $score . ';
+    echo '<script>const score = ' . $diem . ';
                   const soCauDung = ' . $soCauDung . ';
           </script>';
 }
