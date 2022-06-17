@@ -265,7 +265,7 @@ if (isset($_POST["submit"])) {
         } else if (questionObj.type === 'Từ trái nghĩa' || questionObj.type === 'Từ đồng nghĩa') {
             return processQuestion(questionObj.question, '', 'b', questionObj.targetPart);
         } else if (questionObj.type === 'Giao tiếp') {
-            return '<pre>' + questionObj.question + '</pre>';
+            return splitTextToParagraph(questionObj.question);
         } else if (questionObj.type === 'Phát âm') {
             let amTiet = questionObj.targetPart.split(' ');
             let processed = questionObj.question.split(':');
