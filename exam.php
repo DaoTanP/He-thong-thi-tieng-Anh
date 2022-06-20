@@ -119,6 +119,10 @@ if (isset($_POST["submit"])) {
     echo '<script>const score = ' . $diem . ';
                   const soCauDung = ' . $soCauDung . ';
           </script>';
+
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $dateTime = date('Y-m-d H:i:s', time());
+    mysqli_query($conn, "INSERT INTO `lichsulambai`(`TenDangNhap`, `MaDeThi`, `DiemSo`, `ThoiGian`) VALUES ('" . $_SESSION['username'] . "','" . $_POST['examCode'] . "','$diem','$dateTime')") or die("khong luu duoc lich su lam bai");
 }
 ?>
 
@@ -146,8 +150,9 @@ if (isset($_POST["submit"])) {
         info.style.display = 'block';
         info.innerHTML = `
             <p class="txt-center">Bài làm đúng ${soCauDung} câu trên tổng số ${questionArr.length} câu, số điểm đạt được: </p>
-            <h1 class="txt-center txt-secondary" style="margin: 4rem; font-size: 4rem">${(score.toString().length > 3) ? score.toFixed(2) : score}</h1>
-            <a href="index.php" class="btn btn-center">Về trang chủ</a>
+            <h1 class="txt-center txt-secondary" style="margin: 4rem; font-size: 4rem">${(score.toString().length > 3) ? score.toFixed(2) : score}</h1>` +
+            //<button class="btn btn-center btn-filled" style="margin-bottom: 1rem;" onclick="this.parent.style.display = 'none';">Xem lại bài làm</button>
+            `<a href="index.php" class="btn btn-center">Về trang chủ</a>
         `;
     } else {
         let info = document.getElementById('exam-info');

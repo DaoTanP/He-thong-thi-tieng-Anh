@@ -69,7 +69,7 @@ if (session_id() == '') {
                 <div class="dropdown-content" style='user-select: none;'>
                     <div class="avatar" data-label="${avatar.dataset.label}" style="margin: auto; font-size: 2rem;"></div>
                     <h4 class="txt-center">${username}</h4>
-                    <hr>
+                    <hr style="margin: 1rem 0;">
                     <a href="logout.php" class="btn btn-center btn-filled" style="display:block; width:80%; text-align: center;">Đăng xuất</a>
                 </div>
             `;

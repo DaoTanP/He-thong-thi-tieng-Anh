@@ -22,6 +22,15 @@
             accent-color: var(--primary-dark);
         }
     </style>
+    <script>
+        window.onload = function() {
+            let urlParams = new URLSearchParams(location.search);
+
+            let page = urlParams.get('page');
+            if (page != null)
+                document.forms['controlPanel']['page'].value = page;
+        }
+    </script>
 </head>
 
 <body>
@@ -64,23 +73,28 @@
         </div>
         <div class="section" style="position: sticky; top: 4rem; height: fit-content;">
             <h1 class="section-title txt-center">Lọc và sắp xếp</h1>
-            <div class="section-container">
+            <form id="controlPanel" method="get" class="section-container">
+                <input type="text" name="page" value="" class="hidden">
                 <div class="category">
                     <h3 style="margin: 0;">Hiển thị</h3>
-                    <Label for="tuVung"><input type="checkbox" checked name="" id="tuVung">Từ vựng</Label>
-                    <Label for="maoTu"><input type="checkbox" checked name="" id="maoTu">Mạo từ</Label>
-                    <Label for="trongAm"><input type="checkbox" checked name="" id="trongAm">Trọng âm</Label>
-                    <Label for="thptqg"><input type="checkbox" checked name="" id="thptqg">Đề thi THPTQG</Label>
+                    <Label for="tuDongNghia"><input type="checkbox" name="display[]" value="Từ đồng nghĩa" id="tuDongNghia">Từ đồng nghĩa</Label>
+                    <Label for="tuTraiNghia"><input type="checkbox" name="display[]" value="Từ trái nghĩa" id="tuTraiNghia">Từ trái nghĩa</Label>
+                    <Label for="maoTu"><input type="checkbox" name="display[]" value="Mạo từ" id="maoTu">Mạo từ</Label>
+                    <Label for="gioiTu"><input type="checkbox" name="display[]" value="Giới từ" id="gioiTu">Giới từ</Label>
+                    <Label for="docHieu"><input type="checkbox" name="display[]" value="Đọc hiểu đoạn văn" id="docHieu">Đọc hiểu đoạn văn</Label>
+                    <Label for="thptqg"><input type="checkbox" name="display[]" value="THPTQG" id="thptqg">Đề thi THPTQG</Label>
                 </div>
                 <hr style="width: 100%;">
                 <div class="category">
                     <h3 style="margin: 0;">Sắp xếp</h3>
-                    <Label for="soCau1"><input type="radio" name="sort" id="soCau1">Số câu: thấp đến cao</Label>
-                    <Label for="soCau2"><input type="radio" name="sort" id="soCau2">Số câu: cao đến thấp</Label>
-                    <Label for="tg1"><input type="radio" name="sort" id="tg1">Thời gian: ngắn đến dài</Label>
-                    <Label for="tg2"><input type="radio" name="sort" id="tg2">Thời gian: dài đến ngắn</Label>
+                    <Label for="soCau1"><input type="radio" name="sort" value="scAsc" id="soCau1">Số câu: thấp đến cao</Label>
+                    <Label for="soCau2"><input type="radio" name="sort" value="scDesc" id="soCau2">Số câu: cao đến thấp</Label>
+                    <Label for="tg1"><input type="radio" name="sort" value="tgAsc" id="tg1">Thời gian: ngắn đến dài</Label>
+                    <Label for="tg2"><input type="radio" name="sort" value="tgDesc" id="tg2">Thời gian: dài đến ngắn</Label>
                 </div>
-            </div>
+                <hr style="width: 100%;">
+                <input type="submit" value="Thực hiện" class="btn btn-filled">
+            </form>
         </div>
     </div>
 
@@ -100,9 +114,35 @@ if (!isset($_GET['page']))
     $_GET['page'] = 0;
 $startingItem = $_GET['page'] * $maxItemsOnPage;
 
-$total = mysqli_query($conn, "SELECT * FROM `dethi`")->num_rows;
-$items = mysqli_query($conn, "SELECT * FROM `dethi` WHERE 1 LIMIT $maxItemsOnPage OFFSET $startingItem");
+$searchquery = '';
+if (isset($_GET['display'])) {
+    $searchquery .= "WHERE `LoaiDeThi` IN (";
+    for ($i = 0; $i < count($_GET['display']) - 1; $i++) {
+        $searchquery .= "'" . $_GET['display'][$i] . "', ";
+    }
+    $searchquery .= "'" . $_GET['display'][count($_GET['display']) - 1] . "') ";
+}
 
+if (isset($_GET['sort'])) {
+    switch ($_GET['sort']) {
+        case "scAsc":
+            $searchquery .= 'ORDER BY `SoCauHoi` ASC';
+            break;
+        case "scDesc":
+            $searchquery .= 'ORDER BY `SoCauHoi` DESC';
+            break;
+        case "tgAsc":
+            $searchquery .= 'ORDER BY `ThoiGian` ASC';
+            break;
+        case "tgDesc":
+            $searchquery .= 'ORDER BY `ThoiGian` DESC';
+            break;
+        default:
+            break;
+    }
+}
+$items = mysqli_query($conn, "SELECT * FROM `dethi` " . $searchquery . " LIMIT $maxItemsOnPage OFFSET $startingItem");
+$total = mysqli_query($conn, "SELECT * FROM `dethi` " . $searchquery)->num_rows;
 $pages = ceil($total / $maxItemsOnPage);
 
 echo '<script> let cards = "";';
@@ -126,26 +166,52 @@ while ($item = mysqli_fetch_array($items)) {
     </div>`;';
 }
 
+function getUrlWithout($getNames)
+{
+    $url = $_SERVER['REQUEST_URI'];
+    $questionMarkExp = explode("?", $url);
+    if (!isset($questionMarkExp[1]))
+        return $questionMarkExp[0] . "?";
+    $urlArray = explode("&", $questionMarkExp[1]);
+    $retUrl = $questionMarkExp[0];
+    $retGet = "";
+    $found = array();
+    foreach ($getNames as $id => $name) {
+        foreach ($urlArray as $key => $value) {
+            if (isset($_GET[$name]) && $value == $name . "=" . $_GET[$name])
+                unset($urlArray[$key]);
+        }
+    }
+    $urlArray = array_values($urlArray);
+    foreach ($urlArray as $key => $value) {
+        if ($key < sizeof($urlArray) && $retGet !== "")
+            $retGet .= "&";
+        $retGet .= $value;
+    }
+    return $retUrl . "?" . $retGet;
+}
+
+$url = getUrlWithout(array('page'));
 echo 'let pages="";';
 if ($_GET['page'] > 0) {
-    echo 'pages +=`<a href="examSelecting.php?page=' . ($_GET['page'] - 1) . '">&larr;</a>`;';
+    echo 'pages +=`<a href="' . $url . '&page=' . ($_GET['page'] - 1) . '">&larr;</a>`;';
 } else {
-    echo 'pages +=`<a href="#">&larr;</a>`;';
+    echo 'pages +=`<a href="' . $url . '&page=0">&larr;</a>`;';
 }
 
 //show all pages
 for ($i = 0; $i < $pages; $i++) {
     if ($_GET['page'] == $i) {
-        echo 'pages+=`<a class="active" href="examSelecting.php?page=' . $i . '">' . ($i + 1) . '</a>`;';
+        echo 'pages+=`<a class="active" href="' . $url . '&page=' . $i . '">' . ($i + 1) . '</a>`;';
     } else {
-        echo 'pages+=`<a href="examSelecting.php?page=' . $i . '">' . ($i + 1) . '</a>`;';
+        echo 'pages+=`<a href="' . $url . '&page=' . $i . '">' . ($i + 1) . '</a>`;';
     }
 }
 
 if ($_GET['page'] < $pages - 1) {
-    echo 'pages +=`<a href="examSelecting.php?page=' . ($_GET['page'] + 1) . '">&rarr;</a>`;';
+    echo 'pages +=`<a href="' . $url . '&page=' . ($_GET['page'] + 1) . '">&rarr;</a>`;';
 } else {
-    echo 'pages +=`<a href="#">&rarr;</a>`;';
+    echo 'pages +=`<a href="' . $url . '&page=' . $_GET['page'] . '">&rarr;</a>`;';
 }
 echo '</script>';
 ?>
