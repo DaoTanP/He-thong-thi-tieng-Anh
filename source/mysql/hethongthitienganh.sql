@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 20, 2022 at 08:38 AM
+-- Generation Time: Jun 20, 2022 at 02:14 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -1937,6 +1937,20 @@ CREATE TABLE IF NOT EXISTS `lichsulambai` (
   KEY `TenDangNhap` (`TenDangNhap`),
   KEY `MaDeThi` (`MaDeThi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `lichsulambai`
+--
+
+INSERT INTO `lichsulambai` (`TenDangNhap`, `MaDeThi`, `DiemSo`, `ThoiGian`) VALUES
+('daotanp', 'MDCDT-1', 0.66666666666667, '0000-00-00 00:00:00'),
+('daotanp', 'MDCDT-1', 0.33333333333333, '0000-00-00 00:00:00'),
+('daotanp', 'MDCDT-1', 1, '0000-00-00 00:00:00'),
+('daotanp', 'MDDV-1', 10, '2022-06-20 08:49:50'),
+('daotanp', 'MDDV-1', 6, '2022-06-20 08:50:52'),
+('daotanp', 'MDDV-1', 2, '2022-06-20 08:51:22'),
+('daotanp', 'MDDV-1', 4, '2022-06-20 08:51:48'),
+('daotanp', 'MDDV-2', 0, '2022-06-20 15:55:38');
 
 -- --------------------------------------------------------
 
